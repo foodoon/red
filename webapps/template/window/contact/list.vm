@@ -1,0 +1,7 @@
+#set($layout ="template/layout/windowLayout.vm")
+
+<div id="tempDialog" style="display:none">
+    <table id="contact-table"></table>
+
+</div>
+<script src="$!homeServer.getURI("assets/js/contact/list.js")"></script>

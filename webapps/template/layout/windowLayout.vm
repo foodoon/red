@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="$!homeServer.getURI("assets/3th/easyui-1.4.1/themes/default/easyui.css")">
+    <link rel="stylesheet" type="text/css" href="$!homeServer.getURI("assets/3th/easyui-1.4.1/themes/icon.css")">
+
+    <script type="text/javascript" src="$!homeServer.getURI("assets/3th/easyui-1.4.1/jquery.min.js")"></script>
+    <script type="text/javascript" src="$!homeServer.getURI("assets/3th/easyui-1.4.1/jquery.easyui.min.js")"></script>
+</head>
+<body>
+    $screen_content
+</body>
+</html>
