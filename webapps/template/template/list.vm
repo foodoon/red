@@ -1,0 +1,18 @@
+<a  class="btn btn-default"  href="$!homeServer.getURI("template/create.htm")" >新建</a>
+
+<table  class="table">
+    <thead>
+ <tr>
+          <th>操作</th>
+ </tr>
+    </thead>
+#foreach($f in $templateDOList)
+  <tr>
+          <td><a href="$!homeServer.getURI("template/edit.htm").addQueryData('id',"$!f.id")" >编辑</a></td>
+    <td><a href="$!homeServer.getURI("template/detail.htm").addQueryData('id',"$!f.id")" >查看详情</a></td>
+      <td><a href="$!homeServer.getURI("template/doDelete.htm").addQueryData('id',"$!f.id")" onclick="return confirm('确定删除吗?')">删除</a></td>
+ </tr>
+#end
+</table>
+
+$tile.load('home/common/page.vm').param('query',$query).param('path','${doNameLower}/list.htm')

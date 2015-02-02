@@ -1,0 +1,35 @@
+<!-- content start -->
+<div class="admin-content">
+    <div class="am-cf am-padding">
+        <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">营销概况</strong></div>
+    </div>
+    <ul class="am-avg-sm-1 am-avg-md-4 am-margin am-padding am-text-center admin-content-list ">
+        <li><a href="#" class="am-text-success"><span class="am-icon-btn am-icon-file-text"></span><br/>今日发送量<br/>2300</a></li>
+        <li><a href="#" class="am-text-warning"><span class="am-icon-btn am-icon-briefcase"></span><br/>今日订单<br/>308</a></li>
+        <li><a href="#" class="am-text-danger"><span class="am-icon-btn am-icon-recycle"></span><br/>昨日发送量<br/>80082</a></li>
+        <li><a href="#" class="am-text-secondary"><span class="am-icon-btn am-icon-user-md"></span><br/>昨日订单<br/>3000</a></li>
+    </ul>
+</div>
+
+<div class="admin-content">
+    <div class="am-cf am-padding">
+        <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">我的营销方案</strong></div>
+    </div>
+<form class="am-form">
+    <div class="am-u-sm-2 am-u-md-2 am-text-right">发货通知&nbsp;<span class="am-icon-toggle-on am-icon-md"> &nbsp;</span></div>
+    <div class="am-u-sm-2 am-u-md-2 am-text-right">到货提醒&nbsp;<span class="am-icon-toggle-off am-icon-md"> &nbsp;</span></div>
+    <div class="am-u-sm-2 am-u-md-2 am-text-right">提醒付款&nbsp;<span class="am-icon-toggle-on am-icon-md"> &nbsp;</span></div>
+    <div class="am-u-sm-2 am-u-md-2 am-text-right">签收关怀&nbsp;<span class="am-icon-toggle-on am-icon-md"> &nbsp;</span></div>
+    <div class="am-u-sm-2 am-u-md-2 am-text-right">好评关怀&nbsp;<span class="am-icon-toggle-on am-icon-md"> &nbsp;</span></div>
+    <div class="am-u-sm-2 am-u-md-2 am-text-right">退款关怀&nbsp;<span class="am-icon-toggle-on am-icon-md"> &nbsp;</span></div>
+</form>
+</div>
+
+<div class="admin-content">
+    <div class="am-cf am-padding">
+        <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">我的余量</strong></div>
+    </div>
+
+        <div class="am-u-sm-4 am-u-md-3 am-text-right">短信余量 :<span>0</span> 条 <a href="" class="am-btn am-btn-warning">充值</a></div>
+
+</div>

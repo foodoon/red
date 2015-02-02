@@ -1,0 +1,13 @@
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<configuration>
+ <mappers>
+  <mapper resource="mybatis/AccountDOMapper.xml"/>
+  <mapper resource="mybatis/AccountDetailDOMapper.xml"/>
+  <mapper resource="mybatis/TaobaoBuyerDOMapper.xml"/>
+  <mapper resource="mybatis/TaobaoOrderDOMapper.xml"/>
+  <mapper resource="mybatis/TaobaoSellerDOMapper.xml"/>
+  <mapper resource="mybatis/TaobaoTokenDOMapper.xml"/>
+  <mapper resource="mybatis/TemplateDOMapper.xml"/>
+ </mappers>
+</configuration>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<tools>
+	
+
+	<toolbox scope="application">
+		<tool key="contextHolder"
+			class="guda.red.common.security.AppContexHolder" />
+	</toolbox>
+    <toolbox scope="application">
+        <tool key="enum" class="guda.red.common.util.EnumUtils" />
+    </toolbox>
+    <toolbox scope="application">
+        <tool key="price" class="guda.red.common.util.PriceHelper" />
+    </toolbox>
+    <toolbox scope="application">
+        <tool key="dateHelper" class="guda.red.common.util.DateHelper" />
+    </toolbox>
+    <tool>
+        <key>esc</key>
+        <scope>application</scope>
+        <class>org.apache.velocity.tools.generic.EscapeTool</class>
+    </tool>
+    <toolbox scope="application">
+        <tool key="formTool" class="guda.mvc.form.FormTools" />
+    </toolbox>
+
+</tools>

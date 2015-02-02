@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="guda.red.dao.TaobaoTokenDOMapper" >
+  <resultMap id="BaseResultMap" type="guda.red.dao.domain.TaobaoTokenDO" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="taobao_seller_id" property="taobaoSellerId" jdbcType="BIGINT" />
+    <result column="taobao_user_nick" property="taobaoUserNick" jdbcType="VARCHAR" />
+    <result column="token_type" property="tokenType" jdbcType="VARCHAR" />
+    <result column="access_token" property="accessToken" jdbcType="VARCHAR" />
+    <result column="expires_in" property="expiresIn" jdbcType="BIGINT" />
+    <result column="r1_expires_in" property="r1ExpiresIn" jdbcType="BIGINT" />
+    <result column="r2_expires_in" property="r2ExpiresIn" jdbcType="BIGINT" />
+    <result column="w1_expires_in" property="w1ExpiresIn" jdbcType="BIGINT" />
+    <result column="w2_expires_in" property="w2ExpiresIn" jdbcType="BIGINT" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    id, taobao_seller_id, taobao_user_nick, token_type, access_token, expires_in, r1_expires_in, 
+    r2_expires_in, w1_expires_in, w2_expires_in
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="guda.red.dao.domain.TaobaoTokenDOCriteria" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from taobao_token
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+    <if test="startRow >= 0" >
+      limit ${startRow} , ${pageSize}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from taobao_token
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from taobao_token
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="guda.red.dao.domain.TaobaoTokenDO" >
+    <selectKey resultType="java.lang.Long" keyProperty="id" order="AFTER" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into taobao_token (taobao_seller_id, taobao_user_nick, token_type, 
+      access_token, expires_in, r1_expires_in, 
+      r2_expires_in, w1_expires_in, w2_expires_in
+      )
+    values (#{taobaoSellerId,jdbcType=BIGINT}, #{taobaoUserNick,jdbcType=VARCHAR}, #{tokenType,jdbcType=VARCHAR}, 
+      #{accessToken,jdbcType=VARCHAR}, #{expiresIn,jdbcType=BIGINT}, #{r1ExpiresIn,jdbcType=BIGINT}, 
+      #{r2ExpiresIn,jdbcType=BIGINT}, #{w1ExpiresIn,jdbcType=BIGINT}, #{w2ExpiresIn,jdbcType=BIGINT}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="guda.red.dao.domain.TaobaoTokenDO" >
+    <selectKey resultType="java.lang.Long" keyProperty="id" order="AFTER" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into taobao_token
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="taobaoSellerId != null" >
+        taobao_seller_id,
+      </if>
+      <if test="taobaoUserNick != null" >
+        taobao_user_nick,
+      </if>
+      <if test="tokenType != null" >
+        token_type,
+      </if>
+      <if test="accessToken != null" >
+        access_token,
+      </if>
+      <if test="expiresIn != null" >
+        expires_in,
+      </if>
+      <if test="r1ExpiresIn != null" >
+        r1_expires_in,
+      </if>
+      <if test="r2ExpiresIn != null" >
+        r2_expires_in,
+      </if>
+      <if test="w1ExpiresIn != null" >
+        w1_expires_in,
+      </if>
+      <if test="w2ExpiresIn != null" >
+        w2_expires_in,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="taobaoSellerId != null" >
+        #{taobaoSellerId,jdbcType=BIGINT},
+      </if>
+      <if test="taobaoUserNick != null" >
+        #{taobaoUserNick,jdbcType=VARCHAR},
+      </if>
+      <if test="tokenType != null" >
+        #{tokenType,jdbcType=VARCHAR},
+      </if>
+      <if test="accessToken != null" >
+        #{accessToken,jdbcType=VARCHAR},
+      </if>
+      <if test="expiresIn != null" >
+        #{expiresIn,jdbcType=BIGINT},
+      </if>
+      <if test="r1ExpiresIn != null" >
+        #{r1ExpiresIn,jdbcType=BIGINT},
+      </if>
+      <if test="r2ExpiresIn != null" >
+        #{r2ExpiresIn,jdbcType=BIGINT},
+      </if>
+      <if test="w1ExpiresIn != null" >
+        #{w1ExpiresIn,jdbcType=BIGINT},
+      </if>
+      <if test="w2ExpiresIn != null" >
+        #{w2ExpiresIn,jdbcType=BIGINT},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="guda.red.dao.domain.TaobaoTokenDOCriteria" resultType="java.lang.Integer" >
+    select count(*) from taobao_token
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByPrimaryKeySelective" parameterType="guda.red.dao.domain.TaobaoTokenDO" >
+    update taobao_token
+    <set >
+      <if test="taobaoSellerId != null" >
+        taobao_seller_id = #{taobaoSellerId,jdbcType=BIGINT},
+      </if>
+      <if test="taobaoUserNick != null" >
+        taobao_user_nick = #{taobaoUserNick,jdbcType=VARCHAR},
+      </if>
+      <if test="tokenType != null" >
+        token_type = #{tokenType,jdbcType=VARCHAR},
+      </if>
+      <if test="accessToken != null" >
+        access_token = #{accessToken,jdbcType=VARCHAR},
+      </if>
+      <if test="expiresIn != null" >
+        expires_in = #{expiresIn,jdbcType=BIGINT},
+      </if>
+      <if test="r1ExpiresIn != null" >
+        r1_expires_in = #{r1ExpiresIn,jdbcType=BIGINT},
+      </if>
+      <if test="r2ExpiresIn != null" >
+        r2_expires_in = #{r2ExpiresIn,jdbcType=BIGINT},
+      </if>
+      <if test="w1ExpiresIn != null" >
+        w1_expires_in = #{w1ExpiresIn,jdbcType=BIGINT},
+      </if>
+      <if test="w2ExpiresIn != null" >
+        w2_expires_in = #{w2ExpiresIn,jdbcType=BIGINT},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="guda.red.dao.domain.TaobaoTokenDO" >
+    update taobao_token
+    set taobao_seller_id = #{taobaoSellerId,jdbcType=BIGINT},
+      taobao_user_nick = #{taobaoUserNick,jdbcType=VARCHAR},
+      token_type = #{tokenType,jdbcType=VARCHAR},
+      access_token = #{accessToken,jdbcType=VARCHAR},
+      expires_in = #{expiresIn,jdbcType=BIGINT},
+      r1_expires_in = #{r1ExpiresIn,jdbcType=BIGINT},
+      r2_expires_in = #{r2ExpiresIn,jdbcType=BIGINT},
+      w1_expires_in = #{w1ExpiresIn,jdbcType=BIGINT},
+      w2_expires_in = #{w2ExpiresIn,jdbcType=BIGINT}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

@@ -1,0 +1,12 @@
+编辑
+
+<form name="taobaoTokenEditForm" action="$!homeServer.getURI("taobaoToken/doUpdate.htm")" method="post">
+  <table class="table">
+  #springBind("taobaoTokenEditForm.id")
+  <input type="hidden" name="${status.expression}" value="$!status.value" />
+      	  <tr>
+	  <td colspan="2">
+	  <input type="submit" class="btn" value="提交"/></td>
+	  </tr>
+  </table>
+</form>

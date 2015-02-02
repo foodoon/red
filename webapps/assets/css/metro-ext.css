@@ -1,0 +1,151 @@
+.metro .bg-custom {
+    background-color: #008287 !important;
+}
+
+.width330{
+    max-width: 330px;
+}
+.width450{
+    max-width: 450px;
+}
+.width350{
+    max-width: 350px;
+}
+.form-center {
+    margin: 100px auto 0;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+}
+
+.center-block {
+    display: block;
+    margin:0 auto;
+}
+.text-center{
+    vertical-align:middle;
+    display:table;
+}
+
+.metro .navigation-bar .navigation-bar-content .active,
+.metro .navbar .navigation-bar-content .active,
+.metro .navigation-bar .navbar-content .active,
+.metro .navbar .navbar-content .active {
+    background-color: #00AAFD;
+}
+
+.pager {
+    padding-left: 0;
+    margin: 20px 0;
+    text-align: center;
+    list-style: none;
+}
+.pager li {
+    display: inline;
+}
+.pager li > a,
+.pager li > span {
+    display: inline-block;
+    padding: 5px 14px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 15px;
+}
+.pager li > a:hover,
+.pager li > a:focus {
+    text-decoration: none;
+    background-color: #eee;
+}
+.pager .next > a,
+.pager .next > span {
+    float: right;
+}
+.pager .previous > a,
+.pager .previous > span {
+    float: left;
+}
+.pager .disabled > a,
+.pager .disabled > a:hover,
+.pager .disabled > a:focus,
+.pager .disabled > span {
+    color: #777;
+    cursor: not-allowed;
+    background-color: #fff;
+}
+
+.metro .alert {
+    padding: 20px 40px 20px 40px;
+    border: 1px #ccc solid;
+    position: relative;
+    margin: 0 0 10px 0;
+    background-color: #fdfdfd !important;
+    min-height: 100px;
+    width:600px;
+}
+
+.metro .alert:after {
+    clear: both;
+}
+
+.metro .tips {
+    padding: 20px 40px 20px 40px;
+    border: 1px #ccc solid;
+    position: relative;
+    margin: 0 0 10px 0;
+    background-color: #fdfdfd !important;
+    min-height: 20px;
+
+}
+.metro .btn-block {
+    display: block;
+    width: 100%;
+    padding-right: 0;
+    padding-left: 0;
+}
+
+
+
+.metro .tips:after {
+    clear: both;
+}
+
+.metro .sidebar.custom {
+    background-color: #dcdcdc;
+    border: 1px #eaeaea solid;
+}
+.metro .sidebar.custom li {
+    border-bottom-color: #eeeeee;
+}
+.metro .sidebar.custom li.title {
+    color: #1d1d1d;
+}
+.metro .sidebar.custom li a {
+    color: #1d1d1d;
+    background-color: #dcdcdc;
+}
+.metro .sidebar.custom li a:hover {
+    background-color: #00aff0;
+}
+.metro .sidebar.custom li ul {
+    background-color: #dcdcdc;
+    border: 1px transparent solid;
+}
+.metro .sidebar.custom li .divider {
+    background-color: #eeeeee;
+}
+.metro .sidebar.custom li .divider:hover {
+    background-color: #eeeeee;
+}
+.metro .sidebar.custom li.disabled a {
+    background-color: #dcdcdc;
+    cursor: default;
+    color: #999999;
+}
+.metro .sidebar.custom li.active a {
+    background-color: #1ba1e2;
+    color: #ffffff;
+}
+
+.metro .sidebar.light li .active {
+    background-color: #00AAFD;
+    color: #ffffff;
+}
