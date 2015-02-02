@@ -4,13 +4,13 @@ Navicat MySQL Data Transfer
 Source Server         : localhost
 Source Server Version : 50617
 Source Host           : localhost:3306
-Source Database       : task
+Source Database       : red
 
 Target Server Type    : MYSQL
 Target Server Version : 50617
 File Encoding         : 65001
 
-Date: 2015-02-02 10:32:42
+Date: 2015-02-02 15:26:04
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -20,7 +20,7 @@ SET FOREIGN_KEY_CHECKS=0;
 DROP TABLE IF EXISTS `account`;
 CREATE TABLE `account` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
-  `user_id` bigint(20) NOT NULL,
+  `taobao_seller_id` bigint(20) NOT NULL,
   `amount` bigint(20) NOT NULL,
   `freeze` bigint(20) NOT NULL,
   `gmt_modified` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
@@ -57,6 +57,25 @@ CREATE TABLE `account_detail` (
 INSERT INTO `account_detail` VALUES ('1', '3', '1', '500', null, '1', '4', '2014-12-28 00:23:40');
 INSERT INTO `account_detail` VALUES ('2', '3', '1', '1000', null, '2', '4', '2014-12-28 00:23:44');
 INSERT INTO `account_detail` VALUES ('3', '4', '3', '2032', null, '3', '4', '2014-12-29 12:44:10');
+
+-- ----------------------------
+-- Table structure for `taobao_buyer`
+-- ----------------------------
+DROP TABLE IF EXISTS `taobao_buyer`;
+CREATE TABLE `taobao_buyer` (
+  `id` bigint(20) NOT NULL,
+  `taobao_seller_id` bigint(20) DEFAULT NULL,
+  `taobao_nick` varchar(64) DEFAULT NULL,
+  `email` varchar(64) DEFAULT NULL,
+  `phone` varchar(16) DEFAULT NULL,
+  `address` varchar(1024) DEFAULT NULL,
+  `gmt_created` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of taobao_buyer
+-- ----------------------------
 
 -- ----------------------------
 -- Table structure for `taobao_item`
@@ -142,7 +161,6 @@ CREATE TABLE `taobao_order` (
 DROP TABLE IF EXISTS `taobao_seller`;
 CREATE TABLE `taobao_seller` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
-  `user_id` bigint(20) DEFAULT NULL,
   `nick` varchar(32) DEFAULT NULL,
   `sex` varchar(4) DEFAULT NULL,
   `level` bigint(20) DEFAULT NULL,
@@ -207,12 +225,12 @@ CREATE TABLE `taobao_shop_cat` (
 -- ----------------------------
 
 -- ----------------------------
--- Table structure for `taobao_user`
+-- Table structure for `taobao_token`
 -- ----------------------------
-DROP TABLE IF EXISTS `taobao_user`;
-CREATE TABLE `taobao_user` (
+DROP TABLE IF EXISTS `taobao_token`;
+CREATE TABLE `taobao_token` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
-  `taobao_user_id` varchar(32) DEFAULT NULL,
+  `taobao_seller_id` bigint(32) NOT NULL,
   `taobao_user_nick` varchar(32) DEFAULT NULL,
   `token_type` varchar(16) DEFAULT NULL,
   `access_token` varchar(64) DEFAULT NULL,
@@ -225,5 +243,22 @@ CREATE TABLE `taobao_user` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
--- Records of taobao_user
+-- Records of taobao_token
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for `template`
+-- ----------------------------
+DROP TABLE IF EXISTS `template`;
+CREATE TABLE `template` (
+  `id` bigint(20) NOT NULL,
+  `taobao_seller_id` bigint(20) NOT NULL,
+  `template_name` varchar(128) NOT NULL,
+  `template_text` text NOT NULL,
+  `gmt_modified` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of template
 -- ----------------------------
