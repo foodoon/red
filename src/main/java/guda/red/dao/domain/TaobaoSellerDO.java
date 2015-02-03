@@ -5,6 +5,8 @@ import java.util.Date;
 public class TaobaoSellerDO {
     private Long id;
 
+    private String taobaoUserId;
+
     private String nick;
 
     private String sex;
@@ -35,6 +37,14 @@ public class TaobaoSellerDO {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getTaobaoUserId() {
+        return taobaoUserId;
+    }
+
+    public void setTaobaoUserId(String taobaoUserId) {
+        this.taobaoUserId = taobaoUserId == null ? null : taobaoUserId.trim();
     }
 
     public String getNick() {

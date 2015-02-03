@@ -1,1 +1,15 @@
-内部错误
+<!-- content start -->
+<div class="admin-content">
+
+    <div class="am-cf am-padding">
+        <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">500</strong> / <small>That’s an error</small></div>
+    </div>
+
+    <div class="am-g">
+        <div class="am-u-sm-12">
+            <h3 class="am-text-center am-text-xxxl am-margin-top-lg">服务端错误，请稍后再试</h3>
+
+        </div>
+    </div>
+</div>
+<!-- content end -->

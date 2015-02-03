@@ -15,6 +15,17 @@
     <link rel="stylesheet" href="$!homeServer.getURI("assets/amazeui/css/amazeui.min.css")"/>
     <link rel="stylesheet" href="$!homeServer.getURI("assets/amazeui/css/admin.css")">
 
+    <!--[if lt IE 9]>
+    <script src="$!homeServer.getURI('assets/amazeui/js/jquery.min.js')"></script>
+
+    <script src="$!homeServer.getURI('assets/amazeui/js/polyfill/rem.min.js')"></script>
+    <script src="$!homeServer.getURI('assets/amazeui/js/polyfill/respond.min.js')"></script>
+    <script src="$!homeServer.getURI('assets/amazeui/js/amazeui.legacy.js')"></script>
+    <![endif]-->
+
+    <!--[if (gte IE 9)|!(IE)]><!-->
+    <script src="$!homeServer.getURI("assets/amazeui/js/jquery.min.js")"></script>
+    <script src="$!homeServer.getURI("assets/amazeui/js/amazeui.min.js")"></script>
     <script language="JavaScript">
         var ctx = "$homeServer.getURI('/')";
     </script>
@@ -67,15 +78,5 @@
 
 
 
-<!--[if lt IE 9]>
-<script src="$!homeServer.getURI('assets/amazeui/js/jquery.min.js')"></script>
 
-<script src="$!homeServer.getURI('assets/amazeui/js/polyfill/rem.min.js')"></script>
-<script src="$!homeServer.getURI('assets/amazeui/js/polyfill/respond.min.js')"></script>
-<script src="$!homeServer.getURI('assets/amazeui/js/amazeui.legacy.js')"></script>
-<![endif]-->
-
-<!--[if (gte IE 9)|!(IE)]><!-->
-<script src="$!homeServer.getURI("assets/amazeui/js/jquery.min.js")"></script>
-<script src="$!homeServer.getURI("assets/amazeui/js/amazeui.min.js")"></script>
 </html>

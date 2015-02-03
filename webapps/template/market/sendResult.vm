@@ -1,0 +1,12 @@
+<div class="am-g">
+    <div class="am-u-sm-12 am-u-sm-centered">
+        #if($successMsg!='')
+            <span class="am-text-success">$successMsg</span>
+        #end
+
+        #if($errorMsg!='')
+            <span class="am-text-danger">$errorMsg</span>
+        #end
+     </div>
+
+</div>

@@ -5,9 +5,11 @@ import java.util.Date;
 public class TaobaoBuyerDO {
     private Long id;
 
-    private Long taobaoSellerId;
+    private String taobaoUserId;
 
     private String taobaoNick;
+
+    private Long taobaoSellerId;
 
     private String email;
 
@@ -25,12 +27,12 @@ public class TaobaoBuyerDO {
         this.id = id;
     }
 
-    public Long getTaobaoSellerId() {
-        return taobaoSellerId;
+    public String getTaobaoUserId() {
+        return taobaoUserId;
     }
 
-    public void setTaobaoSellerId(Long taobaoSellerId) {
-        this.taobaoSellerId = taobaoSellerId;
+    public void setTaobaoUserId(String taobaoUserId) {
+        this.taobaoUserId = taobaoUserId == null ? null : taobaoUserId.trim();
     }
 
     public String getTaobaoNick() {
@@ -39,6 +41,14 @@ public class TaobaoBuyerDO {
 
     public void setTaobaoNick(String taobaoNick) {
         this.taobaoNick = taobaoNick == null ? null : taobaoNick.trim();
+    }
+
+    public Long getTaobaoSellerId() {
+        return taobaoSellerId;
+    }
+
+    public void setTaobaoSellerId(Long taobaoSellerId) {
+        this.taobaoSellerId = taobaoSellerId;
     }
 
     public String getEmail() {

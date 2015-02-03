@@ -21,6 +21,25 @@ public class TaobaoSerivce {
     @Autowired
     private TaobaoAPIConfig taobaoAPIConfig;
 
+
+    public TradesSoldGetResponse queryTradeSold(String sessionKey,Date startTime,Date endTime,long pageNo,long pageSize){
+        TaobaoClient client=new DefaultTaobaoClient(taobaoAPIConfig.getApiUrl(), taobaoAPIConfig.getAppKey(), taobaoAPIConfig.getAppSecret());
+        TradesSoldGetRequest req=new TradesSoldGetRequest();
+        req.setFields("buyer_nick,receiver_mobile,receiver_address,receiver_city,total_fee");
+        req.setStartCreated(startTime);
+        req.setEndCreated(endTime);
+
+        req.setPageNo(pageNo);
+        req.setPageSize(pageSize);
+        req.setUseHasNext(true);
+        try {
+            return client.execute(req , sessionKey);
+        } catch (ApiException e) {
+            log.error("",e);
+        }
+        return null;
+    }
+
     /**
      *
      * @param sessionKey

@@ -185,63 +185,73 @@ public class TaobaoBuyerDOCriteria {
             return (Criteria) this;
         }
 
-        public Criteria andTaobaoSellerIdIsNull() {
-            addCriterion("taobao_seller_id is null");
+        public Criteria andTaobaoUserIdIsNull() {
+            addCriterion("taobao_user_id is null");
             return (Criteria) this;
         }
 
-        public Criteria andTaobaoSellerIdIsNotNull() {
-            addCriterion("taobao_seller_id is not null");
+        public Criteria andTaobaoUserIdIsNotNull() {
+            addCriterion("taobao_user_id is not null");
             return (Criteria) this;
         }
 
-        public Criteria andTaobaoSellerIdEqualTo(Long value) {
-            addCriterion("taobao_seller_id =", value, "taobaoSellerId");
+        public Criteria andTaobaoUserIdEqualTo(String value) {
+            addCriterion("taobao_user_id =", value, "taobaoUserId");
             return (Criteria) this;
         }
 
-        public Criteria andTaobaoSellerIdNotEqualTo(Long value) {
-            addCriterion("taobao_seller_id <>", value, "taobaoSellerId");
+        public Criteria andTaobaoUserIdNotEqualTo(String value) {
+            addCriterion("taobao_user_id <>", value, "taobaoUserId");
             return (Criteria) this;
         }
 
-        public Criteria andTaobaoSellerIdGreaterThan(Long value) {
-            addCriterion("taobao_seller_id >", value, "taobaoSellerId");
+        public Criteria andTaobaoUserIdGreaterThan(String value) {
+            addCriterion("taobao_user_id >", value, "taobaoUserId");
             return (Criteria) this;
         }
 
-        public Criteria andTaobaoSellerIdGreaterThanOrEqualTo(Long value) {
-            addCriterion("taobao_seller_id >=", value, "taobaoSellerId");
+        public Criteria andTaobaoUserIdGreaterThanOrEqualTo(String value) {
+            addCriterion("taobao_user_id >=", value, "taobaoUserId");
             return (Criteria) this;
         }
 
-        public Criteria andTaobaoSellerIdLessThan(Long value) {
-            addCriterion("taobao_seller_id <", value, "taobaoSellerId");
+        public Criteria andTaobaoUserIdLessThan(String value) {
+            addCriterion("taobao_user_id <", value, "taobaoUserId");
             return (Criteria) this;
         }
 
-        public Criteria andTaobaoSellerIdLessThanOrEqualTo(Long value) {
-            addCriterion("taobao_seller_id <=", value, "taobaoSellerId");
+        public Criteria andTaobaoUserIdLessThanOrEqualTo(String value) {
+            addCriterion("taobao_user_id <=", value, "taobaoUserId");
             return (Criteria) this;
         }
 
-        public Criteria andTaobaoSellerIdIn(List<Long> values) {
-            addCriterion("taobao_seller_id in", values, "taobaoSellerId");
+        public Criteria andTaobaoUserIdLike(String value) {
+            addCriterion("taobao_user_id like", value, "taobaoUserId");
             return (Criteria) this;
         }
 
-        public Criteria andTaobaoSellerIdNotIn(List<Long> values) {
-            addCriterion("taobao_seller_id not in", values, "taobaoSellerId");
+        public Criteria andTaobaoUserIdNotLike(String value) {
+            addCriterion("taobao_user_id not like", value, "taobaoUserId");
             return (Criteria) this;
         }
 
-        public Criteria andTaobaoSellerIdBetween(Long value1, Long value2) {
-            addCriterion("taobao_seller_id between", value1, value2, "taobaoSellerId");
+        public Criteria andTaobaoUserIdIn(List<String> values) {
+            addCriterion("taobao_user_id in", values, "taobaoUserId");
             return (Criteria) this;
         }
 
-        public Criteria andTaobaoSellerIdNotBetween(Long value1, Long value2) {
-            addCriterion("taobao_seller_id not between", value1, value2, "taobaoSellerId");
+        public Criteria andTaobaoUserIdNotIn(List<String> values) {
+            addCriterion("taobao_user_id not in", values, "taobaoUserId");
+            return (Criteria) this;
+        }
+
+        public Criteria andTaobaoUserIdBetween(String value1, String value2) {
+            addCriterion("taobao_user_id between", value1, value2, "taobaoUserId");
+            return (Criteria) this;
+        }
+
+        public Criteria andTaobaoUserIdNotBetween(String value1, String value2) {
+            addCriterion("taobao_user_id not between", value1, value2, "taobaoUserId");
             return (Criteria) this;
         }
 
@@ -312,6 +322,66 @@ public class TaobaoBuyerDOCriteria {
 
         public Criteria andTaobaoNickNotBetween(String value1, String value2) {
             addCriterion("taobao_nick not between", value1, value2, "taobaoNick");
+            return (Criteria) this;
+        }
+
+        public Criteria andTaobaoSellerIdIsNull() {
+            addCriterion("taobao_seller_id is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andTaobaoSellerIdIsNotNull() {
+            addCriterion("taobao_seller_id is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andTaobaoSellerIdEqualTo(Long value) {
+            addCriterion("taobao_seller_id =", value, "taobaoSellerId");
+            return (Criteria) this;
+        }
+
+        public Criteria andTaobaoSellerIdNotEqualTo(Long value) {
+            addCriterion("taobao_seller_id <>", value, "taobaoSellerId");
+            return (Criteria) this;
+        }
+
+        public Criteria andTaobaoSellerIdGreaterThan(Long value) {
+            addCriterion("taobao_seller_id >", value, "taobaoSellerId");
+            return (Criteria) this;
+        }
+
+        public Criteria andTaobaoSellerIdGreaterThanOrEqualTo(Long value) {
+            addCriterion("taobao_seller_id >=", value, "taobaoSellerId");
+            return (Criteria) this;
+        }
+
+        public Criteria andTaobaoSellerIdLessThan(Long value) {
+            addCriterion("taobao_seller_id <", value, "taobaoSellerId");
+            return (Criteria) this;
+        }
+
+        public Criteria andTaobaoSellerIdLessThanOrEqualTo(Long value) {
+            addCriterion("taobao_seller_id <=", value, "taobaoSellerId");
+            return (Criteria) this;
+        }
+
+        public Criteria andTaobaoSellerIdIn(List<Long> values) {
+            addCriterion("taobao_seller_id in", values, "taobaoSellerId");
+            return (Criteria) this;
+        }
+
+        public Criteria andTaobaoSellerIdNotIn(List<Long> values) {
+            addCriterion("taobao_seller_id not in", values, "taobaoSellerId");
+            return (Criteria) this;
+        }
+
+        public Criteria andTaobaoSellerIdBetween(Long value1, Long value2) {
+            addCriterion("taobao_seller_id between", value1, value2, "taobaoSellerId");
+            return (Criteria) this;
+        }
+
+        public Criteria andTaobaoSellerIdNotBetween(Long value1, Long value2) {
+            addCriterion("taobao_seller_id not between", value1, value2, "taobaoSellerId");
             return (Criteria) this;
         }
 

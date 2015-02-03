@@ -3,7 +3,7 @@ package guda.red.dao.domain;
 public class TaobaoTokenDO {
     private Long id;
 
-    private Long taobaoSellerId;
+    private String taobaoUserId;
 
     private String taobaoUserNick;
 
@@ -29,12 +29,12 @@ public class TaobaoTokenDO {
         this.id = id;
     }
 
-    public Long getTaobaoSellerId() {
-        return taobaoSellerId;
+    public String getTaobaoUserId() {
+        return taobaoUserId;
     }
 
-    public void setTaobaoSellerId(Long taobaoSellerId) {
-        this.taobaoSellerId = taobaoSellerId;
+    public void setTaobaoUserId(String taobaoUserId) {
+        this.taobaoUserId = taobaoUserId == null ? null : taobaoUserId.trim();
     }
 
     public String getTaobaoUserNick() {

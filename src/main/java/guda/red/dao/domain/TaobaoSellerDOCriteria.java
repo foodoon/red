@@ -185,6 +185,76 @@ public class TaobaoSellerDOCriteria {
             return (Criteria) this;
         }
 
+        public Criteria andTaobaoUserIdIsNull() {
+            addCriterion("taobao_user_id is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andTaobaoUserIdIsNotNull() {
+            addCriterion("taobao_user_id is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andTaobaoUserIdEqualTo(String value) {
+            addCriterion("taobao_user_id =", value, "taobaoUserId");
+            return (Criteria) this;
+        }
+
+        public Criteria andTaobaoUserIdNotEqualTo(String value) {
+            addCriterion("taobao_user_id <>", value, "taobaoUserId");
+            return (Criteria) this;
+        }
+
+        public Criteria andTaobaoUserIdGreaterThan(String value) {
+            addCriterion("taobao_user_id >", value, "taobaoUserId");
+            return (Criteria) this;
+        }
+
+        public Criteria andTaobaoUserIdGreaterThanOrEqualTo(String value) {
+            addCriterion("taobao_user_id >=", value, "taobaoUserId");
+            return (Criteria) this;
+        }
+
+        public Criteria andTaobaoUserIdLessThan(String value) {
+            addCriterion("taobao_user_id <", value, "taobaoUserId");
+            return (Criteria) this;
+        }
+
+        public Criteria andTaobaoUserIdLessThanOrEqualTo(String value) {
+            addCriterion("taobao_user_id <=", value, "taobaoUserId");
+            return (Criteria) this;
+        }
+
+        public Criteria andTaobaoUserIdLike(String value) {
+            addCriterion("taobao_user_id like", value, "taobaoUserId");
+            return (Criteria) this;
+        }
+
+        public Criteria andTaobaoUserIdNotLike(String value) {
+            addCriterion("taobao_user_id not like", value, "taobaoUserId");
+            return (Criteria) this;
+        }
+
+        public Criteria andTaobaoUserIdIn(List<String> values) {
+            addCriterion("taobao_user_id in", values, "taobaoUserId");
+            return (Criteria) this;
+        }
+
+        public Criteria andTaobaoUserIdNotIn(List<String> values) {
+            addCriterion("taobao_user_id not in", values, "taobaoUserId");
+            return (Criteria) this;
+        }
+
+        public Criteria andTaobaoUserIdBetween(String value1, String value2) {
+            addCriterion("taobao_user_id between", value1, value2, "taobaoUserId");
+            return (Criteria) this;
+        }
+
+        public Criteria andTaobaoUserIdNotBetween(String value1, String value2) {
+            addCriterion("taobao_user_id not between", value1, value2, "taobaoUserId");
+            return (Criteria) this;
+        }
+
         public Criteria andNickIsNull() {
             addCriterion("nick is null");
             return (Criteria) this;
