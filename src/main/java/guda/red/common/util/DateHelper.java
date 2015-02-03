@@ -22,6 +22,12 @@ public class DateHelper {
         calendar.add(Calendar.DAY_OF_YEAR,-7);
         return cleanMHS(calendar.getTime());
     }
+    public static Date last3MonDay(){
+        Calendar calendar = Calendar.getInstance();
+        calendar.add(Calendar.MONTH,-3);
+        calendar.add(Calendar.DAY_OF_YEAR,1);
+        return calendar.getTime();
+    }
 
     public static String formatYMD(Object d){
         if(d instanceof Date) {
@@ -110,6 +116,6 @@ public class DateHelper {
     }
 
     public static void main(String[] args){
-        System.out.println(endMHS(new Date()));
+        System.out.println(DateHelper.last3MonDay());
     }
 }

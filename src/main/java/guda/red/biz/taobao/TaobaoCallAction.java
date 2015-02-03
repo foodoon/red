@@ -7,7 +7,10 @@ import guda.red.biz.TaobaoTokenBiz;
 import guda.red.common.security.AppContexHolder;
 import guda.red.common.security.AppContext;
 import guda.red.common.security.UserProfile;
+import guda.red.dao.TaobaoSellerDOMapper;
 import guda.red.dao.TaobaoTokenDOMapper;
+import guda.red.dao.domain.TaobaoSellerDO;
+import guda.red.dao.domain.TaobaoSellerDOCriteria;
 import guda.red.dao.domain.TaobaoTokenDO;
 import guda.red.dao.domain.TaobaoTokenDOCriteria;
 import guda.red.web.common.constans.SessionConstants;
@@ -35,7 +38,8 @@ public class TaobaoCallAction {
     private TaobaoTokenDOMapper taobaoTokenDOMapper;
     @Autowired
    private TaobaoAPIConfig taobaoAPIConfig;
-
+    @Autowired
+   private TaobaoSellerDOMapper taobaoSellerDOMapper;
 
 
     @RequestMapping(value = "/taobaoCall.htm", method = RequestMethod.GET)
@@ -103,6 +107,12 @@ public class TaobaoCallAction {
                     AppContext appContext = new AppContext();
                     appContext.setUserProfile(userProfile);
                     AppContexHolder.setContext(appContext);
+                    TaobaoSellerDOCriteria taobaoSellerDOCriteria = new TaobaoSellerDOCriteria();
+                    taobaoSellerDOCriteria.createCriteria().andTaobaoUserIdEqualTo(taobaoTokenDO.getTaobaoUserId());
+                    List<TaobaoSellerDO> taobaoSellerDOs = taobaoSellerDOMapper.selectByExample(taobaoSellerDOCriteria);
+                    if(taobaoSellerDOs.size() == 0){
+                        
+                    }
                     request.getSession().setAttribute(SessionConstants.APP_CONTEXT, appContext);
 
                 } else {
