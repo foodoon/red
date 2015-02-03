@@ -25,6 +25,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -111,8 +112,13 @@ public class TaobaoCallAction {
                     taobaoSellerDOCriteria.createCriteria().andTaobaoUserIdEqualTo(taobaoTokenDO.getTaobaoUserId());
                     List<TaobaoSellerDO> taobaoSellerDOs = taobaoSellerDOMapper.selectByExample(taobaoSellerDOCriteria);
                     if(taobaoSellerDOs.size() == 0){
-                        
+                        TaobaoSellerDO taobaoSellerDO = new TaobaoSellerDO();
+                        taobaoSellerDO.setGmtCreated(new Date());
+                        taobaoSellerDO.setTaobaoUserId(taobaoTokenDO.getTaobaoUserId());
+                        taobaoSellerDOMapper.insert(taobaoSellerDO);
+                        userProfile.setTaobaoSellerDO(taobaoSellerDO);
                     }
+                    userProfile.setTaobaoSellerDO(taobaoSellerDOs.get(0));
                     request.getSession().setAttribute(SessionConstants.APP_CONTEXT, appContext);
 
                 } else {

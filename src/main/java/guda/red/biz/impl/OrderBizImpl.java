@@ -11,6 +11,7 @@ import guda.red.dao.TaobaoOrderDOMapper;
 import guda.red.dao.domain.TaobaoBuyerDO;
 import guda.red.dao.domain.TaobaoOrderDO;
 import guda.red.dao.domain.TaobaoOrderDOCriteria;
+import guda.red.dao.domain.TaobaoSellerDO;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,6 +35,7 @@ public class OrderBizImpl implements OrderBiz {
     @Override
     public void loadOrder(String sessionKey) {
         String taobaoUserId = AppContexHolder.getContext().getUserProfile().getTaobaoUserId();
+        TaobaoSellerDO taobaoSellerDO = AppContexHolder.getContext().getUserProfile().getTaobaoSellerDO();
         TaobaoOrderDOCriteria taobaoOrderDOCriteria = new TaobaoOrderDOCriteria();
         taobaoOrderDOCriteria.createCriteria().andTaobaoUserIdEqualTo(taobaoUserId);
         taobaoOrderDOCriteria.setOrderByClause("gmt_created desc");
@@ -42,9 +44,10 @@ public class OrderBizImpl implements OrderBiz {
         List<TaobaoOrderDO> taobaoOrderDOs = taobaoOrderDOMapper.selectByExample(taobaoOrderDOCriteria);
         if(taobaoOrderDOs.size() == 0){
             Date startTime = DateHelper.last3MonDay();
+            Date endTime = new Date();
             try {
                 long pageNo = 1;
-                TradesSoldGetResponse tradesSoldGetResponse = taobaoSerivce.queryTradeSold(sessionKey, startTime, new Date(), pageNo, 100);
+                TradesSoldGetResponse tradesSoldGetResponse = taobaoSerivce.queryTradeSold(sessionKey, startTime,endTime, pageNo, 100);
                 while(tradesSoldGetResponse.isSuccess()&& tradesSoldGetResponse.getHasNext()){
                     List<Trade> trades = tradesSoldGetResponse.getTrades();
                     if(trades == null){
@@ -52,8 +55,17 @@ public class OrderBizImpl implements OrderBiz {
                     }
                     for(Trade trade:trades) {
                         TaobaoBuyerDO taobaoBuyerDO = new TaobaoBuyerDO();
+                        taobaoBuyerDO.setGmtCreated(new Date());
+                        taobaoBuyerDO.setTaobaoNick(trade.getBuyerNick());
+                        taobaoBuyerDO.setPhone(trade.getReceiverPhone());
+                        taobaoBuyerDO.setAddress(trade.getReceiverAddress());
+                        taobaoBuyerDO.setTaobaoSellerId(taobaoSellerDO.getId());
+                        taobaoBuyerDOMapper.insert(taobaoBuyerDO);
+
 
                     }
+                    tradesSoldGetResponse = taobaoSerivce.queryTradeSold(sessionKey, startTime, endTime, ++pageNo, 100);
+
                 }
             }catch(Exception e){
                 log.error("",e);
