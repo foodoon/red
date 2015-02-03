@@ -1,0 +1,7 @@
+#if(${pageMsg} )
+<div class="tips">
+    $!{pageMsg}
+</div>
+#end
+
+
