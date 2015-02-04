@@ -71,18 +71,18 @@
                         <input type="hidden" class="J_order_type" name="${status.expression}" value="$!status.value">
 
                         <div class="am-u-sm-12 am-u-md-10 ">
-                            <button class="J_order_type_btn am-btn am-btn-warning am-btn-xs">
+                            <a href="javascript:void(0)" class="J_order_type_btn am-btn am-btn-warning am-btn-xs">
                                 <i class="J_order_type_i am-icon-check-square-o"></i>
                                 全部
-                            </button>
-                            <button class="J_order_type_btn am-btn am-btn-default am-btn-xs">
+                            </a>
+                            <a  href="javascript:void(0)" class="J_order_type_btn am-btn am-btn-default am-btn-xs">
                                 <i class="J_order_type_i am-icon-check-square-o " style="display:none;"></i>
                                 一个月以内
-                            </button>
-                            <button class="J_order_type_btn am-btn am-btn-default am-btn-xs">
+                            </a>
+                            <a  href="javascript:void(0)" class="J_order_type_btn am-btn am-btn-default am-btn-xs">
                                 <i class="J_order_type_i am-icon-check-square-o" style="display:none;"></i>
                                 三个月以内
-                            </button>
+                            </a>
                             #foreach($error in $status.errorMessages) <b>$error</b>  #end
                         </div>
 
