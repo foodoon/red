@@ -1,0 +1,28 @@
+<div class="admin-content">
+    <div class="am-cf am-padding">
+        <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">我的账户</strong> /
+            <small>发送记录</small>
+        </div>
+    </div>
+
+    <table class="am-table">
+        <thead>
+        <tr>
+            <th>接收方手机号</th>
+            <th>短信内容</th>
+            <th>发送时间</th>
+        </tr>
+        </thead>
+        #foreach($f in $msgOutDOList)
+            <tr>
+                <td> $!f.recv</td>
+                <td> $!f.msgText</td>
+                <td> $!f.gmtCreate</td>
+
+            </tr>
+        #end
+    </table>
+
+    $tile.load('template/common/page.vm').param('query',$query).param('path','account/sendList.htm')
+
+</div>

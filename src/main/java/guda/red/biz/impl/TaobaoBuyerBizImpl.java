@@ -2,6 +2,7 @@ package guda.red.biz.impl;
 
 import java.util.List;
 
+import guda.red.common.security.AppContexHolder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,6 +37,7 @@ public class TaobaoBuyerBizImpl implements TaobaoBuyerBiz{
         BizResult bizResult = new BizResult();
         try {
             TaobaoBuyerDOCriteria taobaoBuyerDOCriteria = new TaobaoBuyerDOCriteria();
+            taobaoBuyerDOCriteria.createCriteria().andTaobaoSellerIdEqualTo(AppContexHolder.getContext().getUserProfile().getTaobaoSellerDO().getId());
             taobaoBuyerDOCriteria.setStartRow(baseQuery.getStartRow());
             taobaoBuyerDOCriteria.setPageSize(baseQuery.getPageSize());
             int totalCount = taobaoBuyerDOMapper.countByExample(taobaoBuyerDOCriteria);

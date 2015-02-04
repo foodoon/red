@@ -1,4 +1,7 @@
 <div class="admin-content">
+    <div class="am-cf am-padding">
+        <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">会员信息</strong> / <small>我的会员</small></div>
+    </div>
    <div class="am-g">
        <table  class="am-table">
            <thead>

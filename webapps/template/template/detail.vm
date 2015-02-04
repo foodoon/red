@@ -1,3 +1,21 @@
-$!template详情
-  <table class="table">
+<div class="am-cf am-padding">
+    <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">短信模版</strong> / <small>详情</small></div>
+</div>
+<div class="am-u-sm-12 am-u-md-8">
+  <table class="am-table">
+                <tr>
+              <td>模版内容</td>
+              <td>
+                  $!templateDO.templateText
+              </td>
+          </tr>
+
+                <tr>
+              <td>模版名称</td>
+              <td>
+                  $!templateDO.templateName
+              </td>
+          </tr>
+
         </table>
+</div>

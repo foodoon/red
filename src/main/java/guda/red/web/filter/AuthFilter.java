@@ -3,6 +3,8 @@ package guda.red.web.filter;
 
 
 import guda.red.common.security.AppContext;
+import guda.red.common.security.UserProfile;
+import guda.red.dao.domain.TaobaoSellerDO;
 import guda.red.web.common.constans.SessionConstants;
 
 import javax.servlet.*;
@@ -29,6 +31,18 @@ public class AuthFilter implements Filter {
             HttpServletResponse response = (HttpServletResponse) servletResponse;
             AppContext app = (AppContext) request.getSession().getAttribute(
                     SessionConstants.APP_CONTEXT);
+            if(app == null){
+                app = new AppContext();
+                UserProfile userProfile = new UserProfile();
+                userProfile.setTaobaoUserId("test");
+                TaobaoSellerDO taobaoSellerDO = new TaobaoSellerDO();
+                taobaoSellerDO.setTaobaoUserId("test");
+                taobaoSellerDO.setId(1L);
+                userProfile.setTaobaoSellerDO(taobaoSellerDO);
+                app.setUserProfile(userProfile);
+                request.getSession().setAttribute(
+                        SessionConstants.APP_CONTEXT,app);
+            }
             if (app == null && needAuth(request)) {
                 response.sendRedirect(getBasePath(request) + "/login.htm");
                 return;

@@ -1,18 +1,28 @@
-<a  class="btn btn-default"  href="$!homeServer.getURI("template/create.htm")" >新建</a>
+<div class="admin-content">
+    <div class="am-cf am-padding">
+        <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">短信模版</strong> / <small>我的模版</small></div>
+    </div>
+    <a class="am-btn am-btn-default" href="$!homeServer.getURI("template/create.htm")">新建</a>
 
-<table  class="table">
-    <thead>
- <tr>
-          <th>操作</th>
- </tr>
-    </thead>
-#foreach($f in $templateDOList)
-  <tr>
-          <td><a href="$!homeServer.getURI("template/edit.htm").addQueryData('id',"$!f.id")" >编辑</a></td>
-    <td><a href="$!homeServer.getURI("template/detail.htm").addQueryData('id',"$!f.id")" >查看详情</a></td>
-      <td><a href="$!homeServer.getURI("template/doDelete.htm").addQueryData('id',"$!f.id")" onclick="return confirm('确定删除吗?')">删除</a></td>
- </tr>
-#end
-</table>
+    <table class="am-table">
+        <thead>
+        <tr>
+            <th>模版名称</th>
+            <th>模版内容</th>
 
-$tile.load('home/common/page.vm').param('query',$query).param('path','${doNameLower}/list.htm')
+            <th >操作</th>
+        </tr>
+        </thead>
+        #foreach($f in $templateDOList)
+            <tr>
+                <td> $!f.templateName</td>
+                <td> $!f.templateText</td>
+                <td><a href="$!homeServer.getURI("template/edit.htm").addQueryData('id',"$!f.id")">编辑</a>
+                    <a href="$!homeServer.getURI("template/doDelete.htm").addQueryData('id',"$!f.id")"
+                       onclick="return confirm('确定删除吗?')">删除</a></td>
+            </tr>
+        #end
+    </table>
+
+    $tile.load('template/common/page.vm').param('query',$query).param('path','template/list.htm')
+</div>

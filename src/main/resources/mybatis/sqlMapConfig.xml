@@ -9,5 +9,6 @@
   <mapper resource="mybatis/TaobaoSellerDOMapper.xml"/>
   <mapper resource="mybatis/TaobaoTokenDOMapper.xml"/>
   <mapper resource="mybatis/TemplateDOMapper.xml"/>
+  <mapper resource="mybatis/MsgOutDOMapper.xml"/>
  </mappers>
 </configuration>

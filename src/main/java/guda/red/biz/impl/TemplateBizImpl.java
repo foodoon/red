@@ -2,6 +2,7 @@ package guda.red.biz.impl;
 
 import java.util.List;
 
+import guda.red.common.security.AppContexHolder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,11 +37,15 @@ public class TemplateBizImpl implements TemplateBiz{
         BizResult bizResult = new BizResult();
         try {
             TemplateDOCriteria templateDOCriteria = new TemplateDOCriteria();
+            templateDOCriteria.createCriteria().andTaobaoSellerIdEqualTo(1L);
+            TemplateDOCriteria.Criteria criteria = templateDOCriteria.createCriteria().andTaobaoSellerIdEqualTo(AppContexHolder.getContext().getUserProfile().getTaobaoSellerDO().getId());
+            templateDOCriteria.or(criteria);
+
             templateDOCriteria.setStartRow(baseQuery.getStartRow());
             templateDOCriteria.setPageSize(baseQuery.getPageSize());
             int totalCount = templateDOMapper.countByExample(templateDOCriteria);
             baseQuery.setTotalCount(totalCount);
-            List<TemplateDO> templateDOList = templateDOMapper.selectByExample(templateDOCriteria);
+            List<TemplateDO> templateDOList = templateDOMapper.selectByExampleWithBLOBs(templateDOCriteria);
             bizResult.data.put("templateDOList", templateDOList);
             bizResult.data.put("query", baseQuery);
             bizResult.success = true;
@@ -53,6 +58,7 @@ public class TemplateBizImpl implements TemplateBiz{
     public BizResult delete(long id) {
         BizResult bizResult = new BizResult();
         try {
+
             templateDOMapper.deleteByPrimaryKey(id);
             bizResult.success = true;
         } catch (Exception e) {
@@ -64,6 +70,7 @@ public class TemplateBizImpl implements TemplateBiz{
     public BizResult create(TemplateDO templateDO) {
         BizResult bizResult = new BizResult();
         try {
+            templateDO.setTaobaoSellerId(AppContexHolder.getContext().getUserProfile().getTaobaoSellerDO().getId());
             int count = templateDOMapper.insert(templateDO);
             bizResult.data.put("count", count);
             bizResult.success = true;

@@ -13,112 +13,111 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import guda.red.biz.TemplateBiz;
-import guda.red.dao.domain.TemplateDO;
-import guda.red.web.form.TemplateEditForm;
-import guda.red.web.form.TemplateForm;
+import guda.red.biz.MsgOutBiz;
+import guda.red.dao.domain.MsgOutDO;
+import guda.red.web.form.MsgOutEditForm;
+import guda.red.web.form.MsgOutForm;
 import guda.tools.web.page.BaseQuery;
 import guda.tools.web.page.BizResult;
 import guda.tools.web.util.RequestUtil;
 
 
 @Controller
-public class TemplateAction {
+public class MsgOutAction {
 
 
     @Autowired
-    private TemplateBiz templateBiz;
+    private MsgOutBiz msgOutBiz;
 
-    @RequestMapping(value = "template/list.htm", method = RequestMethod.GET)
+    @RequestMapping(value = "msgOut/list.htm", method = RequestMethod.GET)
     public String list(HttpServletRequest request, ModelMap modelMap) {
         int pageId = RequestUtil.getInt(request, "pageNo");
         int pageSize = RequestUtil.getInt(request, "pageSize");
         BaseQuery baseQuery = new BaseQuery();
         baseQuery.setPageNo(pageId);
-        baseQuery.setPageSize(pageSize);
         modelMap.put("query",baseQuery);
-        BizResult bizResult = templateBiz.list(baseQuery);
+        BizResult bizResult = msgOutBiz.list(baseQuery);
         if (bizResult.success) {
             modelMap.putAll(bizResult.data);
-            return "template/list.vm";
+            return "msgOut/list.vm";
         } else {
             return "common/error.vm";
         }
 
     }
 
-    @RequestMapping(value = "template/edit.htm", method = RequestMethod.GET)
-    public String edit(HttpServletRequest request, ModelMap modelMap, TemplateEditForm templateEditForm,
+    @RequestMapping(value = "msgOut/edit.htm", method = RequestMethod.GET)
+    public String edit(HttpServletRequest request, ModelMap modelMap, MsgOutEditForm msgOutEditForm,
         BindingResult result, Map<String,Object> model) {
         long id = RequestUtil.getLong(request, "id");
-        BizResult bizResult = templateBiz.detail(id);
+        BizResult bizResult = msgOutBiz.detail(id);
         if (bizResult.success) {
             modelMap.putAll(bizResult.data);
-            templateEditForm.initForm(((TemplateDO)bizResult.data.get("templateDO")));
-            return "template/edit.vm";
+            msgOutEditForm.initForm(((MsgOutDO)bizResult.data.get("msgOutDO")));
+            return "msgOut/edit.vm";
         } else {
             return "common/error.vm";
         }
 
     }
 
-    @RequestMapping(value = "template/detail.htm", method = RequestMethod.GET)
+    @RequestMapping(value = "msgOut/detail.htm", method = RequestMethod.GET)
     public String detail(HttpServletRequest request, ModelMap modelMap) {
         long id = RequestUtil.getLong(request, "id");
-        BizResult bizResult = templateBiz.detail(id);
+        BizResult bizResult = msgOutBiz.detail(id);
         if (bizResult.success) {
             modelMap.putAll(bizResult.data);
-            return "template/detail.vm";
+            return "msgOut/detail.vm";
         } else {
             return "common/error.vm";
         }
 
     }
 
-    @RequestMapping(value = "template/create.htm", method = RequestMethod.GET)
-    public String create(HttpServletRequest request, ModelMap modelMap, TemplateForm templateForm,
+    @RequestMapping(value = "msgOut/create.htm", method = RequestMethod.GET)
+    public String create(HttpServletRequest request, ModelMap modelMap, MsgOutForm msgOutForm,
         BindingResult result, Map<String,Object> model) {
-        return "template/create.vm";
+        return "msgOut/create.vm";
     }
 
-    @RequestMapping(value = "template/doCreate.htm", method = RequestMethod.POST)
-    public String doCreate(HttpServletRequest request, ModelMap modelMap,@Valid  TemplateForm templateForm,
-        BindingResult result, Map<String,Object> model) {
-        if (result.hasErrors()) {
-            return "template/create.vm";
-        }
-        TemplateDO templateDO = templateForm.toDO();
-        BizResult bizResult = templateBiz.create(templateDO);
-        if (bizResult.success) {
-            return "redirect:/template/list.htm";
-        } else {
-            return "common/error.vm";
-        }
-
-    }
-
-    @RequestMapping(value = "template/doUpdate.htm", method = RequestMethod.POST)
-    public String doUpdate(HttpServletRequest request, HttpServletResponse response,ModelMap modelMap,@Valid TemplateEditForm templateEditForm,
+    @RequestMapping(value = "msgOut/doCreate.htm", method = RequestMethod.POST)
+    public String doCreate(HttpServletRequest request, ModelMap modelMap,@Valid  MsgOutForm msgOutForm,
         BindingResult result, Map<String,Object> model) {
         if (result.hasErrors()) {
-            return "template/edit.vm";
+            return "msgOut/create.vm";
         }
-        TemplateDO templateDO = templateEditForm.toDO();
-        BizResult bizResult = templateBiz.update(templateDO);
+        MsgOutDO msgOutDO = msgOutForm.toDO();
+        BizResult bizResult = msgOutBiz.create(msgOutDO);
         if (bizResult.success) {
-            return "redirect:/template/list.htm";
+            return "redirect:/msgOut/list.htm";
         } else {
             return "common/error.vm";
         }
 
     }
 
-    @RequestMapping(value = "template/doDelete.htm")
+    @RequestMapping(value = "msgOut/doUpdate.htm", method = RequestMethod.POST)
+    public String doUpdate(HttpServletRequest request, HttpServletResponse response,ModelMap modelMap,@Valid MsgOutEditForm msgOutEditForm,
+        BindingResult result, Map<String,Object> model) {
+        if (result.hasErrors()) {
+            return "msgOut/edit.vm";
+        }
+        MsgOutDO msgOutDO = msgOutEditForm.toDO();
+        BizResult bizResult = msgOutBiz.update(msgOutDO);
+        if (bizResult.success) {
+            return "redirect:/msgOut/list.htm";
+        } else {
+            return "common/error.vm";
+        }
+
+    }
+
+    @RequestMapping(value = "msgOut/doDelete.htm")
     public String doDelete(HttpServletRequest request, ModelMap modelMap) {
         long id = RequestUtil.getLong(request, "id");
-        BizResult bizResult = templateBiz.delete(id);
+        BizResult bizResult = msgOutBiz.delete(id);
         if (bizResult.success) {
-            return "template/list.htm";
+            return "msgOut/list.htm";
         } else {
             return "common/error.vm";
         }

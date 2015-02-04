@@ -1,12 +1,34 @@
-编辑
+<div class="admin-content">
+    <div class="am-cf am-padding">
+        <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">短信模版</strong> / <small>修改</small></div>
+    </div>
+    <div class="am-u-sm-12 am-u-md-8">
+    <form class="am-form" name="templateEditForm" action="$!homeServer.getURI("template/doUpdate.htm")" method="post">
+        <table class="am-table">
+            #springBind("templateEditForm.id")
+            <input type="hidden" name="${status.expression}" value="$!status.value"/>
+            #springBind("templateEditForm.templateName")
+            <tr>
+                <td>模版名称</td>
+                <td>
+                    <input class="form-control" type="text" name="${status.expression}" value="$!status.value"/>
+                    #foreach($error in $status.errorMessages) <b>$error</b>  #end
+                </td>
+            </tr>
+            #springBind("templateEditForm.templateText")
+            <tr>
+                <td>模版内容</td>
+                <td>
+                    <textarea rows="5" cols="60" name="${status.expression}"  >$!status.value</textarea>
+                    #foreach($error in $status.errorMessages) <b>$error</b>  #end
+                </td>
+            </tr>
 
-<form name="templateEditForm" action="$!homeServer.getURI("template/doUpdate.htm")" method="post">
-  <table class="table">
-  #springBind("templateEditForm.id")
-  <input type="hidden" name="${status.expression}" value="$!status.value" />
-      	  <tr>
-	  <td colspan="2">
-	  <input type="submit" class="btn" value="提交"/></td>
-	  </tr>
-  </table>
-</form>
+            <tr>
+                <td colspan="2">
+                    <input type="submit" class="am-btn am-btn-warning" value="提交"/></td>
+            </tr>
+        </table>
+    </form>
+   </div>
+</div>

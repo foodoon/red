@@ -28,4 +28,8 @@
   <property name="mapperInterface" value="guda.red.dao.TemplateDOMapper"/>
   <property name="sqlSessionFactory" ref="sqlSessionFactory"/>
  </bean>
+ <bean id="msgOutDOMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
+  <property name="mapperInterface" value="guda.red.dao.MsgOutDOMapper"/>
+  <property name="sqlSessionFactory" ref="sqlSessionFactory"/>
+ </bean>
 </beans>

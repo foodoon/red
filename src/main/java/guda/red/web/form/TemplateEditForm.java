@@ -25,6 +25,8 @@ public class TemplateEditForm extends TemplateForm{
         if(templateDO == null){
         return ;
     }
+    this.setTemplateText(templateDO.getTemplateText());
+    this.setTemplateName(templateDO.getTemplateName());
 }
 
 }

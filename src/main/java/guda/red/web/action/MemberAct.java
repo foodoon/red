@@ -19,7 +19,7 @@ import java.util.Map;
  * Created by foodoon on 2015/2/3.
  */
 @Controller
-public class MemberAction {
+public class MemberAct {
 
     @Autowired
     private TaobaoBuyerBiz taobaoBuyerBiz;

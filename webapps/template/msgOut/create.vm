@@ -1,0 +1,35 @@
+新增
+
+<form name="msgOutForm" action="$!homeServer.getURI("msgOut/doCreate.htm")" method="post">
+  <table class="table">
+    #springBind("msgOutForm.msgText")
+    <tr>
+        <td>短信内容</td>
+        <td>
+            <input class="form-control" type="text" name="${status.expression}" value="$!status.value" />
+            #foreach($error in $status.errorMessages) <b>$error</b>  #end
+        </td>
+    </tr>
+    #springBind("msgOutForm.gmtCreate")
+    <tr>
+        <td>发送时间</td>
+        <td>
+            <input class="form-control" type="text" name="${status.expression}" value="$!status.value" />
+            #foreach($error in $status.errorMessages) <b>$error</b>  #end
+        </td>
+    </tr>
+    #springBind("msgOutForm.recv")
+    <tr>
+        <td>接收方手机号</td>
+        <td>
+            <input class="form-control" type="text" name="${status.expression}" value="$!status.value" />
+            #foreach($error in $status.errorMessages) <b>$error</b>  #end
+        </td>
+    </tr>
+
+	  <tr>
+	  <td colspan="2">
+	  <input type="submit" class="btn" value="提交"/></td>
+	  </tr>
+  </table>
+</form>

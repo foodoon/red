@@ -63,10 +63,10 @@
         <property name="filterChains">
             <list>
                 <ref bean="characterEncodingFilter" />
-                <!--
+
                 <ref bean="authFilter" />
                 <ref bean="appContextFilter" />
-                <ref bean="securityCheckFilter" /> -->
+                <ref bean="securityCheckFilter" />
             </list>
         </property>
     </bean>

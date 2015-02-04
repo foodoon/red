@@ -1,0 +1,24 @@
+<a  class="btn btn-default"  href="$!homeServer.getURI("msgOut/create.htm")" >新建</a>
+
+<table  class="table">
+    <thead>
+ <tr>
+              <th>短信内容</th>
+              <th>发送时间</th>
+              <th>接收方手机号</th>
+          <th>操作</th>
+ </tr>
+    </thead>
+#foreach($f in $msgOutDOList)
+  <tr>
+               <td> $!f.msgText</td>
+               <td> $!f.gmtCreate</td>
+               <td> $!f.recv</td>
+          <td><a href="$!homeServer.getURI("msgOut/edit.htm").addQueryData('id',"$!f.id")" >编辑</a></td>
+    <td><a href="$!homeServer.getURI("msgOut/detail.htm").addQueryData('id',"$!f.id")" >查看详情</a></td>
+      <td><a href="$!homeServer.getURI("msgOut/doDelete.htm").addQueryData('id',"$!f.id")" onclick="return confirm('确定删除吗?')">删除</a></td>
+ </tr>
+#end
+</table>
+
+$tile.load('home/common/page.vm').param('query',$query).param('path','${doNameLower}/list.htm')

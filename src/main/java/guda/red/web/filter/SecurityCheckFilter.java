@@ -22,18 +22,18 @@ public class SecurityCheckFilter implements Filter {
 
     @Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
-        if (request instanceof HttpServletRequest) {
-            HttpServletRequest req = (HttpServletRequest) request;
-            HttpServletResponse resp = (HttpServletResponse) response;
-            AppContext app = AppContexHolder.getContext();
-            String requestURI = req.getRequestURI();
-            if (requestURI.endsWith("json") || requestURI.endsWith("htm")) {
-
-                    returnError(req,resp);
-                    return;
-
-            }
-        }
+//        if (request instanceof HttpServletRequest) {
+//            HttpServletRequest req = (HttpServletRequest) request;
+//            HttpServletResponse resp = (HttpServletResponse) response;
+//            AppContext app = AppContexHolder.getContext();
+//            String requestURI = req.getRequestURI();
+//            if (requestURI.endsWith("json") || requestURI.endsWith("htm")) {
+//
+//                    returnError(req,resp);
+//                    return;
+//
+//            }
+//        }
 
         chain.doFilter(request, response);
 
