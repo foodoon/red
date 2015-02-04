@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50617
 File Encoding         : 65001
 
-Date: 2015-02-02 15:26:04
+Date: 2015-02-04 09:01:33
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -59,13 +59,32 @@ INSERT INTO `account_detail` VALUES ('2', '3', '1', '1000', null, '2', '4', '201
 INSERT INTO `account_detail` VALUES ('3', '4', '3', '2032', null, '3', '4', '2014-12-29 12:44:10');
 
 -- ----------------------------
+-- Table structure for `msg_out`
+-- ----------------------------
+DROP TABLE IF EXISTS `msg_out`;
+CREATE TABLE `msg_out` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `taobao_seller_id` bigint(20) NOT NULL,
+  `msg_text` text NOT NULL,
+  `recv` varchar(16) NOT NULL,
+  `status` int(11) DEFAULT NULL,
+  `gmt_create` datetime NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of msg_out
+-- ----------------------------
+
+-- ----------------------------
 -- Table structure for `taobao_buyer`
 -- ----------------------------
 DROP TABLE IF EXISTS `taobao_buyer`;
 CREATE TABLE `taobao_buyer` (
   `id` bigint(20) NOT NULL,
-  `taobao_seller_id` bigint(20) DEFAULT NULL,
+  `taobao_user_id` varchar(32) DEFAULT NULL,
   `taobao_nick` varchar(64) DEFAULT NULL,
+  `taobao_seller_id` bigint(20) DEFAULT NULL,
   `email` varchar(64) DEFAULT NULL,
   `phone` varchar(16) DEFAULT NULL,
   `address` varchar(1024) DEFAULT NULL,
@@ -161,6 +180,7 @@ CREATE TABLE `taobao_order` (
 DROP TABLE IF EXISTS `taobao_seller`;
 CREATE TABLE `taobao_seller` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `taobao_user_id` varchar(32) DEFAULT NULL,
   `nick` varchar(32) DEFAULT NULL,
   `sex` varchar(4) DEFAULT NULL,
   `level` bigint(20) DEFAULT NULL,
@@ -230,7 +250,7 @@ CREATE TABLE `taobao_shop_cat` (
 DROP TABLE IF EXISTS `taobao_token`;
 CREATE TABLE `taobao_token` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
-  `taobao_seller_id` bigint(32) NOT NULL,
+  `taobao_user_id` varchar(32) NOT NULL,
   `taobao_user_nick` varchar(32) DEFAULT NULL,
   `token_type` varchar(16) DEFAULT NULL,
   `access_token` varchar(64) DEFAULT NULL,
