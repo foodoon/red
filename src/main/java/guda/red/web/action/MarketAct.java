@@ -79,7 +79,7 @@ public class MarketAct {
             accountDO.setAmount(accountDO.getAmount() - recvArray.length);
             accountDOMapper.updateByPrimaryKeySelective(accountDO);
             //发送短信
-            
+
 
 
         }
