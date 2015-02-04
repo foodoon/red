@@ -6,6 +6,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 
+import guda.red.web.form.MemberForm;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -16,7 +17,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import guda.red.biz.TaobaoBuyerBiz;
 import guda.red.dao.domain.TaobaoBuyerDO;
 import guda.red.web.form.TaobaoBuyerEditForm;
-import guda.red.web.form.TaobaoBuyerForm;
 import guda.tools.web.page.BaseQuery;
 import guda.tools.web.page.BizResult;
 import guda.tools.web.util.RequestUtil;
@@ -75,18 +75,18 @@ public class TaobaoBuyerAction {
     }
 
     @RequestMapping(value = "taobaoBuyer/create.htm", method = RequestMethod.GET)
-    public String create(HttpServletRequest request, ModelMap modelMap, TaobaoBuyerForm taobaoBuyerForm,
+    public String create(HttpServletRequest request, ModelMap modelMap, MemberForm memberForm,
         BindingResult result, Map<String,Object> model) {
         return "taobaoBuyer/create.vm";
     }
 
     @RequestMapping(value = "taobaoBuyer/doCreate.htm", method = RequestMethod.POST)
-    public String doCreate(HttpServletRequest request, ModelMap modelMap,@Valid  TaobaoBuyerForm taobaoBuyerForm,
+    public String doCreate(HttpServletRequest request, ModelMap modelMap,@Valid MemberForm memberForm,
         BindingResult result, Map<String,Object> model) {
         if (result.hasErrors()) {
             return "taobaoBuyer/create.vm";
         }
-        TaobaoBuyerDO taobaoBuyerDO = taobaoBuyerForm.toDO();
+        TaobaoBuyerDO taobaoBuyerDO = memberForm.toDO();
         BizResult bizResult = taobaoBuyerBiz.create(taobaoBuyerDO);
         if (bizResult.success) {
             return "redirect:/taobaoBuyer/list.htm";

@@ -2,6 +2,7 @@
     <div class="am-cf am-padding">
         <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">会员信息</strong> / <small>我的会员</small></div>
     </div>
+    <a class="am-btn am-btn-default" href="$!homeServer.getURI("member/create.htm")">新建</a>
    <div class="am-g">
        <table  class="am-table">
            <thead>
@@ -19,7 +20,6 @@
                    <td>$!f.phone</td>
                    <td>$!f.address</td>
                    <td>$date.format($!f.gmtCreated)</td>
-                   <td><a href="$!homeServer.getURI("member/edit.htm").addQueryData('id',"$!f.id")" >编辑</a></td>
                    <td><a href="$!homeServer.getURI("member/doDelete.htm").addQueryData('id',"$!f.id")" onclick="return confirm('确定删除吗?')">删除</a></td>
                </tr>
            #end

@@ -1,0 +1,36 @@
+<div class="admin-content">
+    <div class="am-cf am-padding">
+        <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">会员信息</strong> /
+            <small>添加会员</small>
+        </div>
+    </div>
+    <div class="am-g">
+        <div class="am-u-sm-12 am-u-md-8">
+        <form class="am-form" name="memberForm" action="$!homeServer.getURI("member/doCreate.htm")" method="post">
+            <table class="am-table">
+                #springBind("memberForm.taobaoNick")
+                <tr>
+                    <td>淘宝昵称</td>
+                    <td>
+                        <input class="form-control" type="text" name="${status.expression}" value="$!status.value"/>
+                        #foreach($error in $status.errorMessages) <b>$error</b>  #end
+                    </td>
+                </tr>
+                #springBind("memberForm.phone")
+                <tr>
+                    <td>手机号</td>
+                    <td>
+                        <input class="form-control" type="text" name="${status.expression}" value="$!status.value"/>
+                        #foreach($error in $status.errorMessages) <b>$error</b>  #end
+                    </td>
+                </tr>
+
+                <tr>
+                    <td colspan="2">
+                        <input type="submit" class="am-btn am-btn-warning" value="提交"/></td>
+                </tr>
+            </table>
+        </form>
+        </div>
+    </div>
+</div>

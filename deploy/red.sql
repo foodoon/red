@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50617
 File Encoding         : 65001
 
-Date: 2015-02-04 09:01:33
+Date: 2015-02-04 16:22:17
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -81,7 +81,7 @@ CREATE TABLE `msg_out` (
 -- ----------------------------
 DROP TABLE IF EXISTS `taobao_buyer`;
 CREATE TABLE `taobao_buyer` (
-  `id` bigint(20) NOT NULL,
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `taobao_user_id` varchar(32) DEFAULT NULL,
   `taobao_nick` varchar(64) DEFAULT NULL,
   `taobao_seller_id` bigint(20) DEFAULT NULL,
@@ -90,11 +90,12 @@ CREATE TABLE `taobao_buyer` (
   `address` varchar(1024) DEFAULT NULL,
   `gmt_created` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of taobao_buyer
 -- ----------------------------
+INSERT INTO `taobao_buyer` VALUES ('1', null, '测试昵称', '1', null, '17098158159', null, '2015-02-04 14:24:49');
 
 -- ----------------------------
 -- Table structure for `taobao_item`
@@ -194,11 +195,12 @@ CREATE TABLE `taobao_seller` (
   `is_golden_seller` int(11) DEFAULT NULL,
   `gmt_created` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of taobao_seller
 -- ----------------------------
+INSERT INTO `taobao_seller` VALUES ('1', '1', 'test', null, null, null, null, null, null, null, null, null, null, null);
 
 -- ----------------------------
 -- Table structure for `taobao_shop`
@@ -271,14 +273,16 @@ CREATE TABLE `taobao_token` (
 -- ----------------------------
 DROP TABLE IF EXISTS `template`;
 CREATE TABLE `template` (
-  `id` bigint(20) NOT NULL,
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `taobao_seller_id` bigint(20) NOT NULL,
   `template_name` varchar(128) NOT NULL,
   `template_text` text NOT NULL,
   `gmt_modified` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of template
 -- ----------------------------
+INSERT INTO `template` VALUES ('1', '1', '发货提醒', '亲爱的{#收件人姓名#}，您的宝贝已发货，快递：{#快递公司#}：{#快递单号#}，请注意查收，有问题请联系【{#店铺名称#}】', null);
+INSERT INTO `template` VALUES ('2', '1', '签收提醒', '亲，感谢您在{#店铺名称#}购买宝贝，签收后请仔细检查宝贝，如满意请点亮5颗星星，有问题随时联系【{#店铺名称#}】', null);

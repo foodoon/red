@@ -11,4 +11,7 @@ public class CommonResultCode {
     public static final String PARAM_CANNOT_BLANK =  "PARAM_CANNOT_BLANK";
     public static final String FORM_TOKEN_ERROR = "FORM_TOKEN_ERROR";
     public static final String FORM_TOKEN_MISS = "FORM_TOKEN_MISS";
+
+    public static final String ACCOUNT_NOT_FOUND = "ACCOUNT_NOT_FOUND";
+    public static final String ACCOUNT_NOT_ENOUGH = "ACCOUNT_NOT_ENOUGH";
 }

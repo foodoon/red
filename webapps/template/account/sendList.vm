@@ -17,7 +17,7 @@
             <tr>
                 <td> $!f.recv</td>
                 <td> $!f.msgText</td>
-                <td> $!f.gmtCreate</td>
+                <td>$date.format( $!f.gmtCreate)</td>
 
             </tr>
         #end

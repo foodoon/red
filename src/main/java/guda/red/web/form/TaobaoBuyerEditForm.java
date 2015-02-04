@@ -3,7 +3,7 @@ package guda.red.web.form;
 import guda.red.dao.domain.TaobaoBuyerDO;
 
 
-public class TaobaoBuyerEditForm extends TaobaoBuyerForm{
+public class TaobaoBuyerEditForm extends MemberForm {
 
     private Long id;
 
