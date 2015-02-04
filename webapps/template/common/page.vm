@@ -1,7 +1,9 @@
-<div class="pagination place-right">
-    <ul>
+
+<div class="am-cf">
+    <div class="am-fr">
+        <ul class="am-pagination">
         #if($query.pageNo == 1)
-            <li class="disabled"><a>首页</a></li>
+            <li class="am-disabled"><a>首页</a></li>
         #else
             <li><a href="$homeServer.getURI("$!{path}?pageNo=1")">首页</a></li>
         #end
@@ -9,11 +11,11 @@
 
             <li><a href="$homeServer.getURI("$!{path}?pageNo=$query.getPrevPage()")" >上一页</a></li>
         #else
-            <li class="disabled"><a>上一页</a></li>
+            <li class="am-disabled"><a>上一页</a></li>
         #end
         #foreach($p in $query.pages)
             #if($p==$query.pageNo)
-                <li class="disabled"><a>$p</a></li>
+                <li class="am-disabled"><a>$p</a></li>
             #else
                 <li><a href="$homeServer.getURI("$!{path}?pageNo=$p")">$p</a></li>
             #end
@@ -22,8 +24,8 @@
             <li><a href="$homeServer.getURI("$!{path}?pageNo=$query.getNextPage()")">下一页</a></li>
             <li><a href="$homeServer.getURI("$!{path}?pageNo=$query.getMaxPage()")">末页</a></li>
         #else
-            <li class="disabled"><a>下一页</a></li>
-            <li class="disabled"><a>末页</a></li>
+            <li class="am-disabled"><a>下一页</a></li>
+            <li class="am-disabled"><a>末页</a></li>
         #end
         #if($query.pageNo == $query.totalPage)
 
@@ -31,4 +33,5 @@
 
         #end
     </ul>
+        </div>
 </div>

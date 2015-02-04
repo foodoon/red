@@ -7,4 +7,14 @@
  <bean id="taobaoSellerBiz" class="guda.red.biz.impl.TaobaoSellerBizImpl"/>
  <bean id="taobaoTokenBiz" class="guda.red.biz.impl.TaobaoTokenBizImpl"/>
  <bean id="templateBiz" class="guda.red.biz.impl.TemplateBizImpl"/>
+
+    <bean id="taobaoAPIConfig" class="guda.red.biz.taobao.TaobaoAPIConfig">
+        <property name="appKey" value="${taobao.appKey}"/>
+        <property name="appSecret" value="${taobao.appSecret}"/>
+        <property name="defaultUrl" value="${taobao.defaultUrl}"/>
+        <property name="redirectUri" value="${taobao.redirectUri}"/>
+        <property name="taobaoOauthUrl" value="${taobao.taobaoOauthUrl}"/>
+        <property name="taokenUri" value="${taobao.taokenUri}"/>
+        <property name="apiUrl" value="${taobao.apiUrl}"/>
+    </bean>
 </beans>

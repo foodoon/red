@@ -1,0 +1,27 @@
+<div class="admin-content">
+   <div class="am-g">
+       <table  class="am-table">
+           <thead>
+           <tr>
+               <th>淘宝昵称</th>
+               <th>手机号码</th>
+               <th>地址</th>
+               <th>活跃时间</th>
+               <th>操作</th>
+           </tr>
+           </thead>
+           #foreach($f in $taobaoBuyerDOList)
+               <tr>
+                   <td>$!f.taobaoNick</td>
+                   <td>$!f.phone</td>
+                   <td>$!f.address</td>
+                   <td>$date.format($!f.gmtCreated)</td>
+                   <td><a href="$!homeServer.getURI("member/edit.htm").addQueryData('id',"$!f.id")" >编辑</a></td>
+                   <td><a href="$!homeServer.getURI("member/doDelete.htm").addQueryData('id',"$!f.id")" onclick="return confirm('确定删除吗?')">删除</a></td>
+               </tr>
+           #end
+       </table>
+
+       $tile.load('template/common/page.vm').param('query',$query).param('path','member/list.htm')
+   </div>
+</div>

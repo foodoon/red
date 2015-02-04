@@ -82,6 +82,11 @@ public class DateHelper {
         return dateFormat.format(d);
     }
 
+    public static String format(Date time){
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy年MM月dd HH时mm分ss秒");
+        return dateFormat.format(time);
+    }
+
     public static String todayHMSForDir(){
         SimpleDateFormat dateFormat = new SimpleDateFormat("HHmmss-sss");
         return dateFormat.format(new Date());
