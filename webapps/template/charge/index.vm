@@ -7,16 +7,17 @@
     <div class="am-g">
         <table class="am-table">
             <thead>
-               <tr><th></th>
-                   <th>充值金额</th>
-                   <th>包含短信数量</th>
-                   <th>单价</th>
-                   <th>操作</th>
-               </tr>
+            <tr>
+                <th></th>
+                <th>充值金额</th>
+                <th>包含短信数量</th>
+                <th>单价</th>
+                <th>操作</th>
+            </tr>
             </thead>
             <tbody>
             <tr>
-               <td>套餐一</td>
+                <td>套餐一</td>
                 <td>￥10元</td>
                 <td>120条</td>
                 <td>￥0.083元/条</td>
@@ -52,5 +53,25 @@
         <input type="text" name="fee" class="J_fee">
 
     </form>
+</div>
+<div id="overlay">
+    <div class="am-g" style="padding-top: 200px;">
+        <div class="am-u-sm-12 am-u-md-4">
+            &nbsp;
+        </div>
+        <div class="am-u-sm-12 am-u-md-4 am-u-sm-centered" style="background: #fff;height:200px">
+            <form class="am-form">
+                <div class="am-form-group am-text-center"><div style="padding-top: 20px;">请到新打开的页面上完成付款</div></div>
+                <div class="am-form-group am-text-center" style="margin-top: 80px;" >
+                    <a class="am-btn am-btn-warning J_pay_success" href="javascript:void(0);">完成付款</a><a
+                        class="am-btn am-btn-default J_pay_fail" href="javascript:void(0);">付款失败</a>
+                </div>
+            </form>
+        </div>
+        <div class="am-u-sm-12 am-u-md-4">
+            &nbsp;
+
+        </div>
+    </div>
 </div>
 <script src="$!homeServer.getURI("assets/js/charge/index.js")"></script>

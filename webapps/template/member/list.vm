@@ -2,7 +2,11 @@
     <div class="am-cf am-padding">
         <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">会员信息</strong> / <small>我的会员</small></div>
     </div>
-    <a class="am-btn am-btn-default" href="$!homeServer.getURI("member/create.htm")">新建</a>
+    <div class="am-g">
+        <div class="am-u-sm-12 am-u-sm-centered">
+        <a class="am-btn am-btn-default" href="$!homeServer.getURI("member/create.htm")">新建</a>
+        </div>
+     </div>
    <div class="am-g">
        <table  class="am-table">
            <thead>
