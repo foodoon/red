@@ -1,0 +1,56 @@
+<div class="admin-content">
+    <div class="am-cf am-padding">
+        <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">我的账户</strong> /
+            <small>充值</small>
+        </div>
+    </div>
+    <div class="am-g">
+        <table class="am-table">
+            <thead>
+               <tr><th></th>
+                   <th>充值金额</th>
+                   <th>包含短信数量</th>
+                   <th>单价</th>
+                   <th>操作</th>
+               </tr>
+            </thead>
+            <tbody>
+            <tr>
+               <td>套餐一</td>
+                <td>￥10元</td>
+                <td>120条</td>
+                <td>￥0.083元/条</td>
+                <td><a href="javascript:void(0)" id="1000" class="J_charge am-btn am-btn-warning">充值</a></td>
+            </tr>
+            <tr>
+                <td>套餐二</td>
+                <td>￥100元</td>
+                <td>1400条</td>
+                <td>￥0.071元/条</td>
+                <td><a href="javascript:void(0)" id="10000" class="J_charge am-btn am-btn-warning">充值</a></td>
+            </tr>
+            <tr>
+                <td>套餐三</td>
+                <td>￥500元</td>
+                <td>7200条</td>
+                <td>￥0.069元/条</td>
+                <td><a href="javascript:void(0)" id="50000" class="J_charge am-btn am-btn-warning">充值</a></td>
+            </tr>
+            <tr>
+                <td>套餐三</td>
+                <td>￥1000元</td>
+                <td>16000条</td>
+                <td>￥0.062元/条</td>
+                <td><a href="javascript:void(0)" id="100000" class="J_charge am-btn am-btn-warning">充值</a></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<div style="display:none">
+    <form class="J_form" action="$homeServer.getURI('/charge/before.htm')" method="post" target="_blank">
+        <input type="text" name="fee" class="J_fee">
+
+    </form>
+</div>
+<script src="$!homeServer.getURI("assets/js/charge/index.js")"></script>

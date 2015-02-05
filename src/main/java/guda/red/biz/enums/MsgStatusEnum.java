@@ -3,7 +3,7 @@ package guda.red.biz.enums;
 /**
  * Created by foodoon on 2015/2/4.
  */
-public enum SendStatusEnum {
+public enum MsgStatusEnum {
 
     INIT("初始化",0),
     SUCCESS("发送成功",1),
@@ -12,7 +12,7 @@ public enum SendStatusEnum {
 
     private int value;
     private String name;
-    private SendStatusEnum(String name,int val){
+    private MsgStatusEnum(String name, int val){
         this.name = name;
         this.value = val;
     }
@@ -33,8 +33,8 @@ public enum SendStatusEnum {
     }
 
     public static String getNameByValue(int val){
-        SendStatusEnum[] values = SendStatusEnum.values();
-        for(SendStatusEnum e:values){
+        MsgStatusEnum[] values = MsgStatusEnum.values();
+        for(MsgStatusEnum e:values){
             if(e.getValue() == val){
                 return e.getName();
             }

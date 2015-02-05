@@ -32,4 +32,9 @@
   <property name="mapperInterface" value="guda.red.dao.MsgOutDOMapper"/>
   <property name="sqlSessionFactory" ref="sqlSessionFactory"/>
  </bean>
+
+ <bean id="orderInfoDOMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
+  <property name="mapperInterface" value="guda.red.dao.OrderInfoDOMapper"/>
+  <property name="sqlSessionFactory" ref="sqlSessionFactory"/>
+ </bean>
 </beans>

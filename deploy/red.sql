@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50617
 File Encoding         : 65001
 
-Date: 2015-02-04 16:22:17
+Date: 2015-02-05 16:06:09
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -75,6 +75,28 @@ CREATE TABLE `msg_out` (
 -- ----------------------------
 -- Records of msg_out
 -- ----------------------------
+
+-- ----------------------------
+-- Table structure for `order_info`
+-- ----------------------------
+DROP TABLE IF EXISTS `order_info`;
+CREATE TABLE `order_info` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `taobao_seller_id` bigint(20) NOT NULL,
+  `fee` bigint(20) NOT NULL,
+  `status` int(11) NOT NULL,
+  `gmt_created` datetime NOT NULL,
+  `gmt_modified` datetime NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of order_info
+-- ----------------------------
+INSERT INTO `order_info` VALUES ('1', '1', '1000', '0', '2015-02-05 15:40:02', '2015-02-05 15:40:02');
+INSERT INTO `order_info` VALUES ('2', '1', '1000', '0', '2015-02-05 15:44:41', '2015-02-05 15:44:41');
+INSERT INTO `order_info` VALUES ('3', '1', '10000', '0', '2015-02-05 16:05:19', '2015-02-05 16:05:19');
+INSERT INTO `order_info` VALUES ('4', '1', '1000', '0', '2015-02-05 16:05:52', '2015-02-05 16:05:52');
 
 -- ----------------------------
 -- Table structure for `taobao_buyer`

@@ -7,6 +7,7 @@
  <bean id="taobaoSellerBiz" class="guda.red.biz.impl.TaobaoSellerBizImpl"/>
  <bean id="taobaoTokenBiz" class="guda.red.biz.impl.TaobaoTokenBizImpl"/>
  <bean id="templateBiz" class="guda.red.biz.impl.TemplateBizImpl"/>
+ <bean id="msgOutBiz" class="guda.red.biz.impl.MsgOutBizImpl"/>
  <bean id="taobaoAPIConfig" class="guda.red.biz.taobao.TaobaoAPIConfig">
   <property name="appKey" value="${taobao.appKey}"/>
   <property name="appSecret" value="${taobao.appSecret}"/>
@@ -16,5 +17,10 @@
   <property name="taokenUri" value="${taobao.taokenUri}"/>
   <property name="apiUrl" value="${taobao.apiUrl}"/>
  </bean>
- <bean id="msgOutBiz" class="guda.red.biz.impl.MsgOutBizImpl"/>
+ <bean id="alipayConfig" class="guda.red.biz.config.AlipayConfig">
+  <property name="partner" value="${alipay.partner}"/>
+  <property name="sellerEmail" value="${alipay.sellerEmail}"/>
+  <property name="sellerKey" value="${alipay.sellerKey}"/>
+ </bean>
+ <bean id="orderInfoBiz" class="guda.red.biz.impl.OrderInfoBizImpl"/>
 </beans>

@@ -11,7 +11,15 @@ public class MarketForm {
     private String testPhone;
 
     private String msgText;
-    private String msgText2;
+    private int useSign;
+
+    public int getUseSign() {
+        return useSign;
+    }
+
+    public void setUseSign(int useSign) {
+        this.useSign = useSign;
+    }
 
     public int getSendType() {
         return sendType;
@@ -19,14 +27,6 @@ public class MarketForm {
 
     public void setSendType(int sendType) {
         this.sendType = sendType;
-    }
-
-    public String getMsgText2() {
-        return msgText2;
-    }
-
-    public void setMsgText2(String msgText2) {
-        this.msgText2 = msgText2;
     }
 
     public String getRecvPhone() {
