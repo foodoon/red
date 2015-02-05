@@ -1,13 +1,19 @@
 package guda.red.web.action;
 
 import guda.red.biz.config.AlipayConfig;
+import guda.red.biz.enums.OrderStatusEnum;
 import guda.red.common.util.AlipayHelper;
 import guda.red.common.util.RequestHelper;
+import guda.red.dao.OrderInfoDOMapper;
+import guda.red.dao.domain.OrderInfoDO;
+import guda.red.dao.domain.OrderInfoDOCriteria;
+import guda.red.web.common.constans.Constants;
 import guda.tools.web.util.RequestUtil;
 import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,6 +23,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
@@ -30,6 +37,8 @@ public class AlipayAct {
     protected final Logger log = LoggerFactory.getLogger(getClass());
     @Autowired
     private AlipayConfig alipayConfig;
+    @Autowired
+    private OrderInfoDOMapper orderInfoDOMapper;
 
     @RequestMapping(value = {"alipay/pay.htm"})
     public String pay( HttpServletRequest request, HttpServletResponse response, ModelMap model) {
@@ -74,22 +83,35 @@ public class AlipayAct {
         String trade_status = new String(request.getParameter("trade_status").getBytes("ISO-8859-1"), "UTF-8");
 
         Long orderId = Long.valueOf(Long.parseLong(out_trade_no));
-      //  Order order = this.manager.findById(orderId);
-//        if (AlipayHelper.verify(params, alipayConfig.getPartner(), alipayConfig.getSellerKey())) {
-//            if (trade_status.equals("TRADE_FINISHED")) {
-//                order.setPaymentStatus(Integer.valueOf(2));
-//                this.manager.updateByUpdater(order);
-//                return FrontUtils.showMessage(request, model, "付款成功，请等待发货！");
-//            }
-//            if (trade_status.equals("TRADE_SUCCESS")) {
-//                order.setPaymentStatus(Integer.valueOf(2));
-//                this.manager.updateByUpdater(order);
-//                return FrontUtils.showMessage(request, model, "付款成功，请等待发货！");
-//            }
-//        } else {
-//            return FrontUtils.showMessage(request, model, "验证失败！");
-//        }
-//        return FrontUtils.showMessage(request, model, "付款异常！");
+
+        OrderInfoDO orderInfoDO = orderInfoDOMapper.selectByPrimaryKey(orderId);
+        if(orderInfoDO == null){
+            model.put(Constants.ERROR_MSG_KEY,"无法找到订单");
+            return "/common/error.vm";
+        }
+        if(orderInfoDO.getStatus() == OrderStatusEnum.SUCCESS.getValue()){
+            model.put(Constants.ERROR_MSG_KEY,"订单状态不正确");
+            return "/common/error.vm";
+        }
+        if (AlipayHelper.verify(params, alipayConfig.getPartner(), alipayConfig.getSellerKey())) {
+            if (trade_status.equals("TRADE_FINISHED")) {
+                orderInfoDO.setStatus(OrderStatusEnum.SUCCESS.getValue());
+                orderInfoDO.setGmtModified(new Date());
+                orderInfoDOMapper.updateByPrimaryKeySelective(orderInfoDO);
+                model.put(Constants.SUCCESS_MSG_KEY,"付款成功");
+                return "/alipay/alipayBack.vm";
+            }
+            if (trade_status.equals("TRADE_SUCCESS")) {
+                orderInfoDO.setStatus(OrderStatusEnum.SUCCESS.getValue());
+                orderInfoDO.setGmtModified(new Date());
+                orderInfoDOMapper.updateByPrimaryKeySelective(orderInfoDO);
+                model.put(Constants.SUCCESS_MSG_KEY,"付款成功");
+                return "/alipay/alipayBack.vm";
+            }
+        } else {
+            model.put(Constants.ERROR_MSG_KEY,"参数校验失败");
+            return "/alipay/alipayBack.vm";
+        }
         return "/alipay/alipayBack.vm";
     }
 

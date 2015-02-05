@@ -59,7 +59,7 @@
         <div class="am-u-sm-12 am-u-md-4">
             &nbsp;
         </div>
-        <div class="am-u-sm-12 am-u-md-4 am-u-sm-centered" style="background: #fff;height:200px">
+        <div class="am-u-sm-12 am-u-md-4 am-u-sm-centered" style="background: #fff;height:200px; opacity: 1;filter: alpha(opacity=100);">
             <form class="am-form">
                 <div class="am-form-group am-text-center"><div style="padding-top: 20px;">请到新打开的页面上完成付款</div></div>
                 <div class="am-form-group am-text-center" style="margin-top: 80px;" >
