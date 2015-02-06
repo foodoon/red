@@ -11,5 +11,6 @@
   <mapper resource="mybatis/TemplateDOMapper.xml"/>
   <mapper resource="mybatis/MsgOutDOMapper.xml"/>
   <mapper resource="mybatis/OrderInfoDOMapper.xml"/>
+  <mapper resource="mybatis/MsgNoticeDOMapper.xml"/>
  </mappers>
 </configuration>

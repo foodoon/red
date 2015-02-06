@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="guda.red.dao.MsgNoticeDOMapper" >
+  <resultMap id="BaseResultMap" type="guda.red.dao.domain.MsgNoticeDO" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="taobao_seller_id" property="taobaoSellerId" jdbcType="BIGINT" />
+    <result column="send_item" property="sendItem" jdbcType="INTEGER" />
+    <result column="recv_item" property="recvItem" jdbcType="INTEGER" />
+    <result column="refund" property="refund" jdbcType="INTEGER" />
+    <result column="wait_pay" property="waitPay" jdbcType="INTEGER" />
+    <result column="positive_comment" property="positiveComment" jdbcType="INTEGER" />
+    <result column="sign" property="sign" jdbcType="INTEGER" />
+    <result column="gmt_created" property="gmtCreated" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    id, taobao_seller_id, send_item, recv_item, refund, wait_pay, positive_comment, sign, 
+    gmt_created
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="guda.red.dao.domain.MsgNoticeDOCriteria" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from msg_notice
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+    <if test="startRow >= 0" >
+      limit ${startRow} , ${pageSize}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from msg_notice
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from msg_notice
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="guda.red.dao.domain.MsgNoticeDO" >
+    <selectKey resultType="java.lang.Long" keyProperty="id" order="AFTER" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into msg_notice (taobao_seller_id, send_item, recv_item, 
+      refund, wait_pay, positive_comment, 
+      sign, gmt_created)
+    values (#{taobaoSellerId,jdbcType=BIGINT}, #{sendItem,jdbcType=INTEGER}, #{recvItem,jdbcType=INTEGER}, 
+      #{refund,jdbcType=INTEGER}, #{waitPay,jdbcType=INTEGER}, #{positiveComment,jdbcType=INTEGER}, 
+      #{sign,jdbcType=INTEGER}, #{gmtCreated,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="guda.red.dao.domain.MsgNoticeDO" >
+    <selectKey resultType="java.lang.Long" keyProperty="id" order="AFTER" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into msg_notice
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="taobaoSellerId != null" >
+        taobao_seller_id,
+      </if>
+      <if test="sendItem != null" >
+        send_item,
+      </if>
+      <if test="recvItem != null" >
+        recv_item,
+      </if>
+      <if test="refund != null" >
+        refund,
+      </if>
+      <if test="waitPay != null" >
+        wait_pay,
+      </if>
+      <if test="positiveComment != null" >
+        positive_comment,
+      </if>
+      <if test="sign != null" >
+        sign,
+      </if>
+      <if test="gmtCreated != null" >
+        gmt_created,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="taobaoSellerId != null" >
+        #{taobaoSellerId,jdbcType=BIGINT},
+      </if>
+      <if test="sendItem != null" >
+        #{sendItem,jdbcType=INTEGER},
+      </if>
+      <if test="recvItem != null" >
+        #{recvItem,jdbcType=INTEGER},
+      </if>
+      <if test="refund != null" >
+        #{refund,jdbcType=INTEGER},
+      </if>
+      <if test="waitPay != null" >
+        #{waitPay,jdbcType=INTEGER},
+      </if>
+      <if test="positiveComment != null" >
+        #{positiveComment,jdbcType=INTEGER},
+      </if>
+      <if test="sign != null" >
+        #{sign,jdbcType=INTEGER},
+      </if>
+      <if test="gmtCreated != null" >
+        #{gmtCreated,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="guda.red.dao.domain.MsgNoticeDOCriteria" resultType="java.lang.Integer" >
+    select count(*) from msg_notice
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByPrimaryKeySelective" parameterType="guda.red.dao.domain.MsgNoticeDO" >
+    update msg_notice
+    <set >
+      <if test="taobaoSellerId != null" >
+        taobao_seller_id = #{taobaoSellerId,jdbcType=BIGINT},
+      </if>
+      <if test="sendItem != null" >
+        send_item = #{sendItem,jdbcType=INTEGER},
+      </if>
+      <if test="recvItem != null" >
+        recv_item = #{recvItem,jdbcType=INTEGER},
+      </if>
+      <if test="refund != null" >
+        refund = #{refund,jdbcType=INTEGER},
+      </if>
+      <if test="waitPay != null" >
+        wait_pay = #{waitPay,jdbcType=INTEGER},
+      </if>
+      <if test="positiveComment != null" >
+        positive_comment = #{positiveComment,jdbcType=INTEGER},
+      </if>
+      <if test="sign != null" >
+        sign = #{sign,jdbcType=INTEGER},
+      </if>
+      <if test="gmtCreated != null" >
+        gmt_created = #{gmtCreated,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="guda.red.dao.domain.MsgNoticeDO" >
+    update msg_notice
+    set taobao_seller_id = #{taobaoSellerId,jdbcType=BIGINT},
+      send_item = #{sendItem,jdbcType=INTEGER},
+      recv_item = #{recvItem,jdbcType=INTEGER},
+      refund = #{refund,jdbcType=INTEGER},
+      wait_pay = #{waitPay,jdbcType=INTEGER},
+      positive_comment = #{positiveComment,jdbcType=INTEGER},
+      sign = #{sign,jdbcType=INTEGER},
+      gmt_created = #{gmtCreated,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

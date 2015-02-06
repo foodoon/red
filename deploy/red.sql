@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50617
 File Encoding         : 65001
 
-Date: 2015-02-05 16:06:09
+Date: 2015-02-06 09:20:24
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -57,6 +57,27 @@ CREATE TABLE `account_detail` (
 INSERT INTO `account_detail` VALUES ('1', '3', '1', '500', null, '1', '4', '2014-12-28 00:23:40');
 INSERT INTO `account_detail` VALUES ('2', '3', '1', '1000', null, '2', '4', '2014-12-28 00:23:44');
 INSERT INTO `account_detail` VALUES ('3', '4', '3', '2032', null, '3', '4', '2014-12-29 12:44:10');
+
+-- ----------------------------
+-- Table structure for `msg_notice`
+-- ----------------------------
+DROP TABLE IF EXISTS `msg_notice`;
+CREATE TABLE `msg_notice` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `taobao_seller_id` bigint(20) NOT NULL,
+  `send_item` int(11) DEFAULT NULL,
+  `recv_item` int(11) DEFAULT NULL,
+  `refund` int(11) DEFAULT NULL,
+  `wait_pay` int(11) DEFAULT NULL,
+  `positive_comment` int(11) DEFAULT NULL,
+  `sign` int(11) DEFAULT NULL,
+  `gmt_created` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of msg_notice
+-- ----------------------------
 
 -- ----------------------------
 -- Table structure for `msg_out`

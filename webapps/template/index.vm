@@ -16,12 +16,79 @@
         <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">我的营销方案</strong></div>
     </div>
 <form class="am-form">
-    <div class="am-u-sm-2 am-u-md-2 am-text-right">发货通知&nbsp;<span class="am-icon-toggle-on am-icon-md"> &nbsp;</span></div>
-    <div class="am-u-sm-2 am-u-md-2 am-text-right">到货提醒&nbsp;<span class="am-icon-toggle-off am-icon-md"> &nbsp;</span></div>
-    <div class="am-u-sm-2 am-u-md-2 am-text-right">提醒付款&nbsp;<span class="am-icon-toggle-on am-icon-md"> &nbsp;</span></div>
-    <div class="am-u-sm-2 am-u-md-2 am-text-right">签收关怀&nbsp;<span class="am-icon-toggle-on am-icon-md"> &nbsp;</span></div>
-    <div class="am-u-sm-2 am-u-md-2 am-text-right">好评关怀&nbsp;<span class="am-icon-toggle-on am-icon-md"> &nbsp;</span></div>
-    <div class="am-u-sm-2 am-u-md-2 am-text-right">退款关怀&nbsp;<span class="am-icon-toggle-on am-icon-md"> &nbsp;</span></div>
+    <div class="am-u-sm-2 am-u-md-2 am-text-right"> 催付款:<span class="J_wait_pay
+    #if($msgNotice.waitPay == 1)
+      am-icon-toggle-on
+    #else
+     am-icon-toggle-off
+    #end am-icon-md"> </span><small><br>当前状态:
+        #if($msgNotice.waitPay == 1)
+            <span class="J_wait_pay_text">打开</span>
+        #else
+            <span class="J_wait_pay_text">关闭</span>
+        #end
+    </small></div>
+    <div class="am-u-sm-2 am-u-md-2 am-text-right"> 发货通知:<span class="J_send_item
+    #if($msgNotice.sendItem == 1)
+      am-icon-toggle-on
+    #else
+     am-icon-toggle-off
+    #end am-icon-md"> </span><small><br>当前状态:
+        #if($msgNotice.sendItem == 1)
+            <span class="J_send_item_text">打开</span>
+        #else
+            <span class="J_send_item_text">关闭</span>
+        #end
+    </small></div>
+    <div class="am-u-sm-2 am-u-md-2 am-text-right"> 到货提醒:<span class="J_recv_item
+    #if($msgNotice.recvItem == 1)
+      am-icon-toggle-on
+    #else
+     am-icon-toggle-off
+    #end am-icon-md"> </span><small><br>当前状态:
+        #if($msgNotice.recvItem == 1)
+            <span class="J_recv_item_text">打开</span>
+        #else
+            <span class="J_recv_item_text">关闭</span>
+        #end
+    </small></div>
+    <div class="am-u-sm-2 am-u-md-2 am-text-right"> 签收关怀:<span class="J_sign
+    #if($msgNotice.sign == 1)
+      am-icon-toggle-on
+    #else
+     am-icon-toggle-off
+    #end am-icon-md"> </span><small><br>当前状态:
+        #if($msgNotice.sign == 1)
+            <span class="J_sign_text">打开</span>
+        #else
+            <span class="J_sign_text">关闭<span>
+        #end
+    </small></div>
+    <div class="am-u-sm-2 am-u-md-2 am-text-right"> 好评关怀:<span class="J_positive_comment
+    #if($msgNotice.positiveComment == 1)
+      am-icon-toggle-on
+    #else
+     am-icon-toggle-off
+    #end am-icon-md"> </span><small><br>当前状态:
+        #if($msgNotice.positiveComment == 1)
+            <span class="J_positive_comment_text">打开</span>
+        #else
+            <span class="J_positive_comment_text">关闭</span>
+        #end
+    </small></div>
+    <div class="am-u-sm-2 am-u-md-2 am-text-right"> 退款关怀:<span class="J_refund
+    #if($msgNotice.refund == 1)
+      am-icon-toggle-on
+    #else
+     am-icon-toggle-off
+    #end am-icon-md"> </span><small><br>当前状态:
+        #if($msgNotice.refund == 1)
+            <span class="J_refund_text">打开</span>
+        #else
+            <span class="J_refund_text">关闭</span>
+        #end
+    </small></div>
+
 </form>
 </div>
 
@@ -33,3 +100,4 @@
         <div class="am-u-sm-4 am-u-md-3 am-text-right">短信余量 :<span>0</span> 条 <a href="$homeServer.getURI('charge/index.htm')" class="am-btn am-btn-warning">充值</a></div>
 
 </div>
+<script src="$!homeServer.getURI("assets/js/index.js")"></script>

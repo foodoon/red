@@ -23,4 +23,5 @@
   <property name="sellerKey" value="${alipay.sellerKey}"/>
  </bean>
  <bean id="orderInfoBiz" class="guda.red.biz.impl.OrderInfoBizImpl"/>
+ <bean id="msgNoticeBiz" class="guda.red.biz.impl.MsgNoticeBizImpl"/>
 </beans>
