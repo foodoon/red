@@ -1,13 +1,11 @@
 package guda.red.web.action;
 
 import guda.red.biz.AccountDetailBiz;
-import guda.red.biz.MsgOutBiz;
 import guda.red.biz.query.AccountDetailQuery;
 import guda.red.common.security.AppContexHolder;
 import guda.red.dao.AccountDOMapper;
-import guda.red.dao.domain.AccountDO;
-import guda.red.dao.domain.AccountDOCriteria;
-import guda.red.dao.domain.TaobaoSellerDO;
+import guda.red.dao.AccountDetailDOMapper;
+import guda.red.dao.domain.*;
 import guda.tools.web.page.BaseQuery;
 import guda.tools.web.page.BizResult;
 import guda.tools.web.util.RequestUtil;
@@ -22,28 +20,26 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * Created by foodoon on 2015/2/3.
+ * Created by foodoon on 2015/2/6.
  */
 @Controller
-public class AccountAct {
+public class AccountDetailAct {
+
+    @Autowired
+    private AccountDetailBiz accountDetailBiz ;
 
     @Autowired
     private AccountDOMapper accountDOMapper;
-    @Autowired
-    private AccountDetailBiz accountDetailBiz ;
-    @Autowired
-    private MsgOutBiz msgOutBiz;
 
-    @RequestMapping(value = "account/profile.htm", method = RequestMethod.GET)
-    public String profile(HttpServletRequest request, ModelMap modelMap,  Map<String,Object> model) {
+    @RequestMapping(value = "account/accountList.htm", method = RequestMethod.GET)
+    public String list(HttpServletRequest request, ModelMap modelMap,  Map<String,Object> model) {
         TaobaoSellerDO taobaoSellerDO = AppContexHolder.getContext().getUserProfile().getTaobaoSellerDO();
         AccountDOCriteria accountDOCriteria = new AccountDOCriteria();
         accountDOCriteria.createCriteria().andTaobaoSellerIdEqualTo(taobaoSellerDO.getId());
         List<AccountDO> accountDOs = accountDOMapper.selectByExample(accountDOCriteria);
-        if(accountDOs.size()>0){
-            model.put("account",accountDOs.get(0));
+        if(accountDOs.size() == 0){
+            return "common/error.vm";
         }
-
         long accountId = accountDOs.get(0).getId();
         int pageId = RequestUtil.getInt(request, "pageNo");
         int pageSize = RequestUtil.getInt(request, "pageSize");
@@ -57,21 +53,7 @@ public class AccountAct {
         if (bizResult.success) {
             modelMap.putAll(bizResult.data);
         }
-        return "account/profile.vm";
+        return "account/accountList.vm";
     }
 
-    @RequestMapping(value = "account/sendList.htm", method = RequestMethod.GET)
-    public String sendList(HttpServletRequest request, ModelMap modelMap,  Map<String,Object> model) {
-        int pageId = RequestUtil.getInt(request, "pageNo");
-        int pageSize = RequestUtil.getInt(request, "pageSize");
-        BaseQuery baseQuery = new BaseQuery();
-        baseQuery.setPageNo(pageId);
-        baseQuery.setPageSize(pageSize);
-        modelMap.put("query",baseQuery);
-        BizResult bizResult = msgOutBiz.list(baseQuery);
-        if (bizResult.success) {
-            modelMap.putAll(bizResult.data);
-        }
-        return "account/sendList.vm";
-    }
 }
