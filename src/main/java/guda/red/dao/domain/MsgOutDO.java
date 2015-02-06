@@ -1,20 +1,20 @@
 package guda.red.dao.domain;
 
-import guda.gen.GenField;
-
 import java.util.Date;
 
 public class MsgOutDO {
     private Long id;
 
     private Long taobaoSellerId;
-    @GenField(cn="接收方手机号")
+
     private String recv;
 
+    private String groupId;
+
     private Integer status;
-    @GenField(cn="发送时间")
+
     private Date gmtCreate;
-    @GenField(cn="短信内容")
+
     private String msgText;
 
     public Long getId() {
@@ -39,6 +39,14 @@ public class MsgOutDO {
 
     public void setRecv(String recv) {
         this.recv = recv == null ? null : recv.trim();
+    }
+
+    public String getGroupId() {
+        return groupId;
+    }
+
+    public void setGroupId(String groupId) {
+        this.groupId = groupId == null ? null : groupId.trim();
     }
 
     public Integer getStatus() {

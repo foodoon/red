@@ -19,8 +19,8 @@ public class AutoGen {
         demoGen.setJdbUrl(jdbUrl);
         demoGen.setDriverClass("com.mysql.jdbc.Driver");
         String baseDir = (String)System.getProperties().get("user.dir");
-//        demoGen.genDAOWithDir("msg_notice", "red", "guda",baseDir);
-//        demoGen.genDaoXMLWithDir("msg_notice","red","guda",baseDir);
+//        demoGen.genDAOWithDir("msg_out", "red", "guda",baseDir);
+//        demoGen.genDaoXMLWithDir("msg_out","red","guda",baseDir);
 //        demoGen.genBizWithDir(baseDir,"msg_notice","red","guda");
 //        demoGen.genActionWithDir(baseDir,"msg_notice","red","guda","/webapps/template/");
 

@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50617
 File Encoding         : 65001
 
-Date: 2015-02-06 09:20:24
+Date: 2015-02-06 16:43:35
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -73,11 +73,12 @@ CREATE TABLE `msg_notice` (
   `sign` int(11) DEFAULT NULL,
   `gmt_created` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of msg_notice
 -- ----------------------------
+INSERT INTO `msg_notice` VALUES ('1', '1', '1', '1', '0', '1', '1', '0', '2015-02-06 13:55:09');
 
 -- ----------------------------
 -- Table structure for `msg_out`
@@ -88,6 +89,7 @@ CREATE TABLE `msg_out` (
   `taobao_seller_id` bigint(20) NOT NULL,
   `msg_text` text NOT NULL,
   `recv` varchar(16) NOT NULL,
+  `group_id` varchar(32) DEFAULT NULL,
   `status` int(11) DEFAULT NULL,
   `gmt_create` datetime NOT NULL,
   PRIMARY KEY (`id`)
