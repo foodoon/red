@@ -61,21 +61,21 @@ public class MarketAct {
         //校验
         if(marketForm.getSendType() == 0){
             if(!StringUtils.hasText(marketForm.getOrderType())){
-                result.rejectValue("orderType", ErrorCode.getMessage(CommonResultCode.PARAM_CANNOT_BLANK));
+                result.rejectValue("orderType", (CommonResultCode.PARAM_CANNOT_BLANK));
                 return "market/index.vm";
             }
             if(!StringUtils.hasText(marketForm.getMsgText())){
-                result.rejectValue("msgText", ErrorCode.getMessage(CommonResultCode.PARAM_CANNOT_BLANK));
+                result.rejectValue("msgText", (CommonResultCode.PARAM_CANNOT_BLANK));
                 return "market/index.vm";
             }
             //TODO 查询账户
         }else{
             if(!StringUtils.hasText(marketForm.getRecvPhone())){
-                result.rejectValue("recvPhone", ErrorCode.getMessage(CommonResultCode.PARAM_CANNOT_BLANK));
+                result.rejectValue("recvPhone",(CommonResultCode.PARAM_CANNOT_BLANK));
                 return "market/index.vm";
             }
             if(!StringUtils.hasText(marketForm.getMsgText())){
-                result.rejectValue("msgText", ErrorCode.getMessage(CommonResultCode.PARAM_CANNOT_BLANK));
+                result.rejectValue("msgText",(CommonResultCode.PARAM_CANNOT_BLANK));
                 return "market/index.vm";
             }
             String recv = marketForm.getRecvPhone();
