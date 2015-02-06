@@ -17,6 +17,12 @@ public class DateHelper {
         return dateFormat.format(d);
     }
 
+    public static Date getLastDay(){
+        Calendar calendar = Calendar.getInstance();
+        calendar.add(Calendar.DAY_OF_YEAR,-1);
+        return calendar.getTime();
+    }
+
     public static Date last7Day(){
         Calendar calendar = Calendar.getInstance();
         calendar.add(Calendar.DAY_OF_YEAR,-7);

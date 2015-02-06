@@ -39,6 +39,27 @@ $(document).ready(function(){
     }
 
 
+    $.ajax({
+        type: "POST",
+        url: ctx + "/stat.json",
+        dataType:'json',
+        success: function(msg){
+            if(msg.success){
+
+                $(".J_today_send")[0].innerHTML=msg.msg.todaySendCount;
+                $(".J_today_order")[0].innerHTML=msg.msg.todayOrder;
+                $(".J_last_send")[0].innerHTML=msg.msg.lastSendCount;
+                $(".J_last_order")[0].innerHTML=msg.msg.lastOrder;
+            }else{
+                alert(msg.msg)
+            }
+        },
+        error: function(msg){
+            alert(msg.msg);
+        }
+    });
+
+
 
 
 
