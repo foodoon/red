@@ -4,13 +4,14 @@ import com.taobao.api.internal.tmc.Message;
 import com.taobao.api.internal.tmc.MessageHandler;
 import com.taobao.api.internal.tmc.MessageStatus;
 import com.taobao.api.internal.tmc.TmcClient;
+import com.taobao.top.link.LinkException;
 
 /**
  * Created by foodoon on 2015/2/8.
  */
 public class TaobaoMsgHandler  {
 
-    public void startListener(){
+    public void startListener() throws LinkException {
 
         TmcClient client = new TmcClient("app_key", "app_secret","default");
         client.setMessageHandler(new MessageHandler() {
