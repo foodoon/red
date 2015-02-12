@@ -63,7 +63,7 @@
         <property name="filterChains">
             <list>
                 <ref bean="characterEncodingFilter" />
-
+                <ref bean="welcomeFilter" />
                 <ref bean="authFilter" />
                 <ref bean="appContextFilter" />
                 <ref bean="securityCheckFilter" />
@@ -79,6 +79,8 @@
     <bean id="appContextFilter" class="guda.red.web.filter.AppContextFilter">
     </bean>
     <bean id="securityCheckFilter" class="guda.red.web.filter.SecurityCheckFilter">
+    </bean>
+    <bean id="welcomeFilter" class="guda.red.web.filter.WelcomeFilter">
     </bean>
 
     <!-- 登陆时验证码的配置 -->
