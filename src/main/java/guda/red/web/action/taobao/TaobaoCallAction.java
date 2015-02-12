@@ -1,9 +1,9 @@
-package guda.red.biz.taobao;
+package guda.red.web.action.taobao;
 
 import com.alibaba.fastjson.JSON;
 import com.taobao.api.internal.util.WebUtils;
-
-import guda.red.biz.TaobaoTokenBiz;
+import guda.red.biz.taobao.TaobaoAPIConfig;
+import guda.red.biz.taobao.TaobaoTokenResponse;
 import guda.red.common.security.AppContexHolder;
 import guda.red.common.security.AppContext;
 import guda.red.common.security.UserProfile;
@@ -42,7 +42,7 @@ public class TaobaoCallAction {
     @Autowired
     private AccountDOMapper accountDOMapper;
 
-    @RequestMapping(value = "/taobaoCall.htm", method = RequestMethod.GET)
+    @RequestMapping(value = "/taobao/back.htm", method = RequestMethod.GET)
     public String doGet(HttpServletRequest request, HttpServletResponse response, ModelMap modelMap) {
         Object _sessionKey = request.getSession().getAttribute(SessionConstants.TAOBAO_ACCESS_TOKEN);
         String code = request.getParameter("code");
