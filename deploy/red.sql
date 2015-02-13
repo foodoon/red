@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50617
 File Encoding         : 65001
 
-Date: 2015-02-06 16:43:35
+Date: 2015-02-13 13:46:27
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -78,7 +78,7 @@ CREATE TABLE `msg_notice` (
 -- ----------------------------
 -- Records of msg_notice
 -- ----------------------------
-INSERT INTO `msg_notice` VALUES ('1', '1', '1', '1', '0', '1', '1', '0', '2015-02-06 13:55:09');
+INSERT INTO `msg_notice` VALUES ('1', '1', '1', '1', '0', '1', '1', '1', '2015-02-06 13:55:09');
 
 -- ----------------------------
 -- Table structure for `msg_out`
@@ -154,8 +154,8 @@ CREATE TABLE `taobao_item` (
   `pic_url` varchar(512) DEFAULT NULL,
   `item_url` varchar(1024) DEFAULT NULL,
   `num` bigint(20) DEFAULT NULL,
-  `list_time` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
-  `delist_time` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
+  `list_time` timestamp NULL DEFAULT NULL,
+  `delist_time` timestamp NULL DEFAULT NULL,
   `price` bigint(20) DEFAULT NULL,
   `has_discount` int(11) DEFAULT NULL,
   `has_showcase` int(11) DEFAULT NULL,
