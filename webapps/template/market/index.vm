@@ -12,6 +12,7 @@
 
         </ul>
         <form class="am-form" name="marketForm" action="$!homeServer.getURI("market/doSend.htm")" method="post">
+            <input style="display:none" type="text"  name="_form_token" value="$formTool.newForm($request)" />
             #springBind("marketForm.sendType")
             <input type="hidden" class="J_input_send_type" name="${status.expression}" value="$!status.value">
 

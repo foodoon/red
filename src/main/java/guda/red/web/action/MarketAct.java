@@ -1,5 +1,6 @@
 package guda.red.web.action;
 
+import guda.mvc.form.Form;
 import guda.red.biz.enums.MsgStatusEnum;
 import guda.red.common.security.AppContexHolder;
 import guda.red.common.util.CommonResultCode;
@@ -53,6 +54,7 @@ public class MarketAct {
         return "market/index.vm";
     }
 
+    @Form
     @RequestMapping(value = "market/doSend.htm", method = RequestMethod.POST)
     public String doSend(HttpServletRequest request, ModelMap modelMap,  MarketForm marketForm,
                         BindingResult result, Map<String,Object> model) {

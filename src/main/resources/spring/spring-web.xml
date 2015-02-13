@@ -71,6 +71,14 @@
         </property>
     </bean>
 
+    <bean id="xssFilter" class="guda.red.web.filter.XssFilter">
+        <property name="filterChainDefinitions">
+            <list>
+                <value>^/*.json</value>
+                <value>^/*.htm</value>
+            </list>
+        </property>
+    </bean>
     <bean id="characterEncodingFilter" class="org.springframework.web.filter.CharacterEncodingFilter">
         <property name="encoding" value="UTF-8"></property>
     </bean>

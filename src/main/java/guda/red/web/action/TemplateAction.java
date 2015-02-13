@@ -6,6 +6,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 
+import guda.mvc.form.Form;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -81,6 +82,7 @@ public class TemplateAction {
         return "template/create.vm";
     }
 
+    @Form
     @RequestMapping(value = "template/doCreate.htm", method = RequestMethod.POST)
     public String doCreate(HttpServletRequest request, ModelMap modelMap,@Valid  TemplateForm templateForm,
         BindingResult result, Map<String,Object> model) {
@@ -97,6 +99,7 @@ public class TemplateAction {
 
     }
 
+    @Form
     @RequestMapping(value = "template/doUpdate.htm", method = RequestMethod.POST)
     public String doUpdate(HttpServletRequest request, HttpServletResponse response,ModelMap modelMap,@Valid TemplateEditForm templateEditForm,
         BindingResult result, Map<String,Object> model) {
