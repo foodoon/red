@@ -28,7 +28,7 @@
 		class="guda.mvc.spring.GudaPropertyConfigurer">
 		<property name="ignoreUnresolvablePlaceholders" value="false"></property>
 		<property name="fileEncoding" value="UTF-8"></property>
-        <property name="locations" value="classpath:app.properties"/>
+        <property name="locations" value="classpath*:app.properties"/>
     </bean>
 
     <bean id="springBeanFactoryTool"  class="guda.mvc.spring.SpringBeanFactoryTool">
