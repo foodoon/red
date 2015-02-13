@@ -6,9 +6,9 @@
         </encoder>>
     </appender>
     <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
-        <file>log/log.log</file>
+        <file>logs/red.log</file>
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-            <FileNamePattern>log/log.%d{yyyy-MM-dd}.log</FileNamePattern>
+            <FileNamePattern>logs/red.%d{yyyy-MM-dd}.log</FileNamePattern>
         </rollingPolicy>
         <encoder>
             <Pattern>[%date{yyyy-MM-dd HH:mm:ss}] [%-5level] [%logger:%line] --%mdc{client} %msg%n</Pattern>
@@ -19,7 +19,7 @@
     <logger name="java.sql.ResultSet" level="INFO"/>
     <root level="info">
         <appender-ref ref="STDOUT"/>
-        <!-- appender-ref ref="FILE" / -->
+        <appender-ref ref="FILE" />
     </root>
 
 </configuration>
