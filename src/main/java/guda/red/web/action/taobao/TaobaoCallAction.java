@@ -66,12 +66,12 @@ public class TaobaoCallAction {
             //param.put("state", state);
             try {
                 String responseJson = WebUtils.doPost(taobaoAPIConfig.getTaobaoOauthUrl(), param, 3000, 3000);
-
-                TaobaoTokenResponse tbResponse = JSON.parseObject(responseJson,
-                        TaobaoTokenResponse.class);
                 if (logger.isInfoEnabled()) {
                     logger.info("response:" + tbResponse);
                 }
+                TaobaoTokenResponse tbResponse = JSON.parseObject(responseJson,
+                        TaobaoTokenResponse.class);
+
                 if (tbResponse.getAccess_token() != null) {
                     request.getSession().setAttribute(SessionConstants.TAOBAO_ACCESS_TOKEN,
                             tbResponse.getAccess_token());
