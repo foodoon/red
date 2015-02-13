@@ -195,7 +195,7 @@ CREATE TABLE `taobao_order` (
   `receiver_zip` varchar(16) DEFAULT NULL,
   `receiver_mobile` varchar(16) DEFAULT NULL,
   `receiver_phone` varchar(16) DEFAULT NULL,
-  `consign_time` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
+  `consign_time` timestamp NULL DEFAULT NULL ,
   `received_payment` varchar(32) DEFAULT NULL,
   `tid` bigint(20) DEFAULT NULL,
   `num` bigint(20) DEFAULT NULL,
@@ -206,13 +206,13 @@ CREATE TABLE `taobao_order` (
   `discount_fee` varchar(32) DEFAULT NULL,
   `point_fee` bigint(20) DEFAULT NULL,
   `total_fee` varchar(32) DEFAULT NULL,
-  `created` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
-  `pay_time` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
-  `modified` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
-  `end_time` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
+  `created` timestamp NULL DEFAULT NULL ,
+  `pay_time` timestamp NULL DEFAULT NULL ,
+  `modified` timestamp NULL DEFAULT NULL,
+  `end_time` timestamp NULL DEFAULT NULL ,
   `alipay_id` bigint(20) DEFAULT NULL,
   `alipay_no` varchar(255) DEFAULT NULL,
-  `gmt_created` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
+  `gmt_created` timestamp NULL DEFAULT NULL ,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -260,11 +260,11 @@ CREATE TABLE `taobao_shop` (
   `nick` varchar(32) DEFAULT NULL,
   `title` varchar(64) DEFAULT NULL,
   `descript` varchar(512) DEFAULT NULL,
-  `created` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
+  `created` timestamp NULL DEFAULT NULL ,
   `item_score` varchar(32) DEFAULT NULL,
   `service_score` varchar(32) DEFAULT NULL,
   `delivery_score` varchar(32) DEFAULT NULL,
-  `gmt_created` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
+  `gmt_created` timestamp NULL DEFAULT NULL ,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
