@@ -67,7 +67,7 @@ public class TaobaoCallAction {
             try {
                 String responseJson = WebUtils.doPost(taobaoAPIConfig.getTaobaoOauthUrl(), param, 3000, 3000);
                 if (logger.isInfoEnabled()) {
-                    logger.info("response:" + tbResponse);
+                    logger.info("response:" + responseJson);
                 }
                 TaobaoTokenResponse tbResponse = JSON.parseObject(responseJson,
                         TaobaoTokenResponse.class);
