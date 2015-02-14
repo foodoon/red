@@ -128,8 +128,11 @@ public class TaobaoCallAction {
                         accountDO.setTaobaoSellerId(taobaoSellerDO.getId());
                         accountDOMapper.insert(accountDO);
                         userProfile.setTaobaoSellerDO(taobaoSellerDO);
+                        userProfile.setTaobaoSellerDO(taobaoSellerDO);
+                    }else{
+                        userProfile.setTaobaoSellerDO(taobaoSellerDOs.get(0));
                     }
-                    userProfile.setTaobaoSellerDO(taobaoSellerDOs.get(0));
+
                     request.getSession().setAttribute(SessionConstants.APP_CONTEXT, appContext);
 
                 } else {
