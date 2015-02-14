@@ -1,0 +1,57 @@
+<!doctype html>
+<html class="no-js">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>橙子CRM</title>
+    <meta name="description" content="">
+    <meta name="keywords" content="index">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <link rel="icon" type="image/png" href="$!homeServer.getURI("assets/amazeui/i/favicon.png")">
+    <link rel="apple-touch-icon-precomposed" href="$!homeServer.getURI("assets/amazeui/i/app-icon72x72@2x.png")">
+    <meta name="apple-mobile-web-app-title" content="Amaze UI" />
+    <link rel="stylesheet" href="$!homeServer.getURI("assets/amazeui/css/amazeui.css")"/>
+    <link rel="stylesheet" href="$!homeServer.getURI("assets/amazeui/css/admin.css")">
+    <link rel="stylesheet" href="$!homeServer.getURI("assets/css/custom.css")">
+
+    <!--[if lt IE 9]>
+    <script src="$!homeServer.getURI('assets/amazeui/js/jquery.min.js')"></script>
+
+    <script src="$!homeServer.getURI('assets/amazeui/js/polyfill/rem.min.js')"></script>
+    <script src="$!homeServer.getURI('assets/amazeui/js/polyfill/respond.min.js')"></script>
+    <script src="$!homeServer.getURI('assets/amazeui/js/amazeui.legacy.js')"></script>
+    <![endif]-->
+
+    <!--[if (gte IE 9)|!(IE)]><!-->
+    <script src="$!homeServer.getURI("assets/amazeui/js/jquery.min.js")"></script>
+    <script src="$!homeServer.getURI("assets/amazeui/js/amazeui.min.js")"></script>
+    <script language="JavaScript">
+        var ctx = "$homeServer.getURI('/')";
+    </script>
+</head>
+
+
+<body>
+
+<div class="am-cf admin-main">
+
+    $screen_content
+</div>
+<hr>
+
+<footer>
+    <p>&copy; Company 2015 </p>
+</footer>
+
+
+<!--/.fluid-container-->
+
+
+</body>
+
+
+
+
+</html>
