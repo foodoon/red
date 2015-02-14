@@ -11,11 +11,15 @@ import javax.servlet.*;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.List;
+import java.util.regex.Pattern;
 
 /**
  * Created by foodoon on 2014/12/20.
  */
 public class AuthFilter implements Filter {
+
+    private List<String> exclude;
 
 
     @Override
@@ -65,12 +69,37 @@ public class AuthFilter implements Filter {
     private boolean needAuth(HttpServletRequest request) {
 
         String requestURI = request.getRequestURI();
-
+        String path = request.getContextPath();
+        String uri = request.getRequestURI().replace(path, "");
+        if (matchUri(uri)) {
+            return false;
+        }
         if (requestURI.endsWith(".htm") || requestURI.endsWith(".json")||"/".equals(requestURI)) {
             return true;
         }
 
         return false;
+    }
+
+    private boolean matchUri(String uri) {
+        if(exclude == null){
+            return false;
+        }
+        for (String pattern : exclude) {
+            if (Pattern.matches(pattern, uri)) {
+                return true;
+            }
+
+        }
+        return false;
+    }
+
+    public List<String> getExclude() {
+        return exclude;
+    }
+
+    public void setExclude(List<String> exclude) {
+        this.exclude = exclude;
     }
 
     @Override

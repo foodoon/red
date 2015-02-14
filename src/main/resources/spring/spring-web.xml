@@ -83,6 +83,11 @@
         <property name="encoding" value="UTF-8"></property>
     </bean>
     <bean id="authFilter" class="guda.red.web.filter.AuthFilter">
+        <property name="exclude">
+            <list>
+                <value>/taobao/back.htm</value>
+            </list>
+        </property>
     </bean>
     <bean id="appContextFilter" class="guda.red.web.filter.AppContextFilter">
     </bean>
