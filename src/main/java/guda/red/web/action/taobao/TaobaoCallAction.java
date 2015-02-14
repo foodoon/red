@@ -128,6 +128,7 @@ public class TaobaoCallAction {
                     if (taobaoSellerDOs.size() == 0) {
                         TaobaoSellerDO taobaoSellerDO = new TaobaoSellerDO();
                         taobaoSellerDO.setGmtCreated(new Date());
+                        taobaoSellerDO.setNick(taobaoTokenDO.getTaobaoUserNick());
                         taobaoSellerDO.setTaobaoUserId(taobaoTokenDO.getTaobaoUserId());
                         taobaoSellerDOMapper.insert(taobaoSellerDO);
                         AccountDO accountDO = new AccountDO();

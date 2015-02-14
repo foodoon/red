@@ -37,6 +37,7 @@ public class AuthFilter implements Filter {
                 userProfile.setTaobaoUserId("test");
                 TaobaoSellerDO taobaoSellerDO = new TaobaoSellerDO();
                 taobaoSellerDO.setTaobaoUserId("test");
+                taobaoSellerDO.setNick("test");
                 taobaoSellerDO.setId(1L);
                 userProfile.setTaobaoSellerDO(taobaoSellerDO);
                 app.setUserProfile(userProfile);
@@ -44,7 +45,7 @@ public class AuthFilter implements Filter {
                         SessionConstants.APP_CONTEXT,app);
             }
             if (app == null && needAuth(request)) {
-                response.sendRedirect(getBasePath(request) + "/login.htm");
+                response.sendRedirect(getBasePath(request) + "/taobao/error.htm");
                 return;
             }
         }
