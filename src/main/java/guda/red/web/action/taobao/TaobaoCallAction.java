@@ -49,10 +49,10 @@ public class TaobaoCallAction {
         if (code == null && _sessionKey == null) {
             try {
                 StringBuilder buf = new StringBuilder();
-                buf.append(taobaoAPIConfig.getDefaultUrl());
+                buf.append(taobaoAPIConfig.getTaobaoOauthUrl());
                 buf.append("?client_id=").append(taobaoAPIConfig.getAppKey())
                         .append("&response_type=code&redirect_uri=").append(getBasePath(request)).append("/taobao/back.htm");
-                response.sendRedirect(taobaoAPIConfig.getDefaultUrl());
+                response.sendRedirect(buf.toString());
                 return null;
             } catch (IOException e) {
                 logger.error("", e);
@@ -69,7 +69,7 @@ public class TaobaoCallAction {
             param.put("view", "web");
             //param.put("state", state);
             try {
-                String responseJson = WebUtils.doPost(taobaoAPIConfig.getTaobaoOauthUrl(), param, 3000, 3000);
+                String responseJson = WebUtils.doPost(taobaoAPIConfig.getTaokenUri(), param, 3000, 3000);
                 if (logger.isInfoEnabled()) {
                     logger.info("response:" + responseJson);
                 }
