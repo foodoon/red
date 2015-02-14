@@ -137,12 +137,13 @@ public class TaobaoCallAction {
                     modelMap.addAttribute("errorMsg", "请求淘宝返回错误,请联系管理员");
                     return "common/error.vm";
                 }
-            } catch (IOException e) {
+            } catch (Exception e) {
+                modelMap.addAttribute("errorMsg",e.getMessage());
                 logger.error("", e);
             }
 
         }
-        return "taobao/taobaoCall.vm";
+        return "taobao/error.vm";
 
     }
 
