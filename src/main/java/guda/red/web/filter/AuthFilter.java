@@ -31,21 +31,21 @@ public class AuthFilter implements Filter {
             HttpServletResponse response = (HttpServletResponse) servletResponse;
             AppContext app = (AppContext) request.getSession().getAttribute(
                     SessionConstants.APP_CONTEXT);
-            if(app == null){
-                app = new AppContext();
-                UserProfile userProfile = new UserProfile();
-                userProfile.setTaobaoUserId("test");
-                TaobaoSellerDO taobaoSellerDO = new TaobaoSellerDO();
-                taobaoSellerDO.setTaobaoUserId("test");
-                taobaoSellerDO.setNick("test");
-                taobaoSellerDO.setId(1L);
-                userProfile.setTaobaoSellerDO(taobaoSellerDO);
-                app.setUserProfile(userProfile);
-                request.getSession().setAttribute(
-                        SessionConstants.APP_CONTEXT,app);
-            }
+//            if(app == null){
+//                app = new AppContext();
+//                UserProfile userProfile = new UserProfile();
+//                userProfile.setTaobaoUserId("test");
+//                TaobaoSellerDO taobaoSellerDO = new TaobaoSellerDO();
+//                taobaoSellerDO.setTaobaoUserId("test");
+//                taobaoSellerDO.setNick("test");
+//                taobaoSellerDO.setId(1L);
+//                userProfile.setTaobaoSellerDO(taobaoSellerDO);
+//                app.setUserProfile(userProfile);
+//                request.getSession().setAttribute(
+//                        SessionConstants.APP_CONTEXT,app);
+//            }
             if (app == null && needAuth(request)) {
-                response.sendRedirect(getBasePath(request) + "/taobao/error.htm");
+                response.sendRedirect(getBasePath(request) + "/taobao/back.htm");
                 return;
             }
         }
@@ -66,11 +66,11 @@ public class AuthFilter implements Filter {
 
         String requestURI = request.getRequestURI();
 
-        if (!requestURI.endsWith(".htm") && !requestURI.endsWith(".json")) {
-            return false;
+        if (requestURI.endsWith(".htm") || requestURI.endsWith(".json")||"/".equals(requestURI)) {
+            return true;
         }
 
-        return requestURI.lastIndexOf("/") > 0;
+        return false;
     }
 
     @Override
