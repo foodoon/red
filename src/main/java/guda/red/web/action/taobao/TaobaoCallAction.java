@@ -83,7 +83,7 @@ public class TaobaoCallAction {
                     taobaoTokenDOCriteria.createCriteria().andTaobaoUserIdEqualTo(tbResponse.getTaobao_user_id());
                     List<TaobaoTokenDO> taobaoTokenDOs = taobaoTokenDOMapper.selectByExample(taobaoTokenDOCriteria);
                     TaobaoTokenDO taobaoTokenDO = new TaobaoTokenDO();
-                    if (taobaoTokenDOs.size() > 0) {
+                    if (taobaoTokenDOs.size() == 0) {
                         taobaoTokenDO.setTaobaoUserId(tbResponse.getTaobao_user_id());
                         taobaoTokenDO.setAccessToken(tbResponse.getAccess_token());
                         taobaoTokenDO.setExpiresIn((tbResponse.getExpires_in()));
@@ -95,6 +95,7 @@ public class TaobaoCallAction {
                         taobaoTokenDO.setW2ExpiresIn(tbResponse.getW2_expires_in());
                         taobaoTokenDOMapper.insert(taobaoTokenDO);
                     } else {
+                        taobaoTokenDO = taobaoTokenDOs.get(0);
                         taobaoTokenDO.setAccessToken(tbResponse.getAccess_token());
                         taobaoTokenDO.setExpiresIn((tbResponse.getExpires_in()));
                         taobaoTokenDO.setR1ExpiresIn((tbResponse.getR1_expires_in()));
@@ -103,6 +104,7 @@ public class TaobaoCallAction {
                         taobaoTokenDO.setTokenType(tbResponse.getToken_type());
                         taobaoTokenDO.setW1ExpiresIn(tbResponse.getW1_expires_in());
                         taobaoTokenDO.setW2ExpiresIn(tbResponse.getW2_expires_in());
+                        taobaoTokenDO.setTaobaoUserId(tbResponse.getTaobao_user_id());
                         taobaoTokenDOMapper.updateByPrimaryKeySelective(taobaoTokenDO);
                     }
 
