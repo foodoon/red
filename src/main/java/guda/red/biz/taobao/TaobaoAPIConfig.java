@@ -15,7 +15,7 @@ public class TaobaoAPIConfig {
 
     private String             redirectUri    = "http://www.ums365.com/taobao/taobaoCall.htm";
 
-    private String             defaultUrl     = "https://oauth.taobao.com/authorize?response_type=code&client_id=21568734&redirect_uri=http://www.ums365.com/taobao/taobaoCall.htm&state=1212&view=web";
+    private String             defaultUrl     = "https://oauth.taobao.com/authorize";
 
     private String           apiUrl;
 

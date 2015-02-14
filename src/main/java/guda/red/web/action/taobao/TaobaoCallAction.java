@@ -48,6 +48,10 @@ public class TaobaoCallAction {
         String code = request.getParameter("code");
         if (code == null && _sessionKey == null) {
             try {
+                StringBuilder buf = new StringBuilder();
+                buf.append(taobaoAPIConfig.getDefaultUrl());
+                buf.append("?client_id=").append(taobaoAPIConfig.getAppKey())
+                        .append("&response_type=code&redirect_uri=").append(getBasePath(request)).append("/taobao/back.htm");
                 response.sendRedirect(taobaoAPIConfig.getDefaultUrl());
                 return null;
             } catch (IOException e) {
@@ -140,6 +144,14 @@ public class TaobaoCallAction {
         }
         return "taobao/taobaoCall.vm";
 
+    }
+
+    private String getBasePath(HttpServletRequest request){
+        String path = request.getContextPath();
+        String basePath = request.getScheme() + "://"
+                + request.getServerName() + ":" + request.getServerPort()
+                + path;
+        return basePath;
     }
 
 
