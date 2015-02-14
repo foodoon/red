@@ -45,6 +45,15 @@ public class TaobaoCallAction {
     @RequestMapping(value = "/taobao/back.htm", method = RequestMethod.GET)
     public String doGet(HttpServletRequest request, HttpServletResponse response, ModelMap modelMap) {
         Object _sessionKey = request.getSession().getAttribute(SessionConstants.TAOBAO_ACCESS_TOKEN);
+        if(_sessionKey!=null){
+            //TODO 校验token是否有效
+            try {
+                response.sendRedirect(getBasePath(request));
+                return null;
+            }catch (Exception e){
+                logger.error("",e);
+            }
+        }
         String code = request.getParameter("code");
         if (code == null && _sessionKey == null) {
             try {
@@ -141,7 +150,7 @@ public class TaobaoCallAction {
                         logger.info("返回access token为空:" + tbResponse);
                     }
                     modelMap.addAttribute("errorMsg", "请求淘宝返回错误,请联系管理员");
-                    return "common/error.vm";
+                    return "taobao/error.vm";
                 }
             } catch (Exception e) {
                 modelMap.addAttribute("errorMsg",e.getMessage());
