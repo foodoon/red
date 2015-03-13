@@ -25,16 +25,18 @@ public class HttpResponse {
         return null;
     }
 
-    public void setByteResult(byte[] paramArrayOfByte) {
-        this.byteResult = paramArrayOfByte;
+    public void setByteResult(byte[] bytes) {
+        this.byteResult = bytes;
     }
 
     public String getStringResult()
             throws UnsupportedEncodingException {
-        if (this.stringResult != null)
+        if (this.stringResult != null) {
             return this.stringResult;
-        if (this.byteResult != null)
+        }
+        if (this.byteResult != null) {
             return new String(this.byteResult, "utf-8");
+        }
         return null;
     }
 

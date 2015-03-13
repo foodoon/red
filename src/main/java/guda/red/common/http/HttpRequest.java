@@ -11,7 +11,7 @@ public class HttpRequest {
     private int connectionTimeout = 0;
     private NameValuePair[] nameValuePairs = null;
     private String queryString = null;
-    private String charset = "GBK";
+    private String charset = "UTF-8";
     private String clientIp;
     private HttpResultType httpResultType = HttpResultType.BYTES;
 

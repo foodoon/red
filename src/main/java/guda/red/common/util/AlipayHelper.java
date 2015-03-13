@@ -19,17 +19,16 @@ import java.util.Map.Entry;
 public class AlipayHelper {
     private static final String ALIPAY_GATE_WAY = "https://mapi.alipay.com/gateway.do?";
     private static final String ALIPAY_GATE_WAY_NOTIFY_VERIFY = "https://mapi.alipay.com/gateway.do?service=notify_verify&";
+    private static final String DEFAULT_CHARSET = "UTF-8";
 
-    public static String buildRequestMysign(Map<String, String> paramMap, String paramString) {
-        String str1 = createLinkString(paramMap);
-        String str2 = "";
-        str2 = sign(str1, paramString, "utf-8");
-        return str2;
+    public static String buildRequestMysign(Map<String, String> paramMap, String sellerKey) {
+        String str1 = createQueryString(paramMap);
+        return sign(str1, sellerKey);
     }
 
-    private static Map<String, String> appendSign(Map<String, String> paramMap, String paramString) {
+    private static Map<String, String> appendSign(Map<String, String> paramMap, String sellerKey) {
         Map localMap = paraFilter(paramMap);
-        String str = buildRequestMysign(localMap, paramString);
+        String str = buildRequestMysign(localMap, sellerKey);
         localMap.put("sign", str);
         localMap.put("sign_type", "MD5");
         return localMap;
@@ -39,7 +38,7 @@ public class AlipayHelper {
         Map localMap = appendSign(paramMap, paramString1);
         ArrayList localArrayList = new ArrayList(localMap.keySet());
         StringBuffer localStringBuffer = new StringBuffer();
-        localStringBuffer.append("<form id=\"alipaysubmit\" name=\"alipaysubmit\" action=\""+ ALIPAY_GATE_WAY +"_input_charset=utf-8\" method=\"" + paramString2 + "\">");
+        localStringBuffer.append("<form id=\"alipaysubmit\" name=\"alipaysubmit\" action=\"" + ALIPAY_GATE_WAY + "_input_charset=utf-8\" method=\"" + paramString2 + "\">");
         for (int i = 0; i < localArrayList.size(); i++) {
             String str1 = (String) localArrayList.get(i);
             String str2 = (String) localMap.get(str1);
@@ -53,19 +52,19 @@ public class AlipayHelper {
     public static String buildRequest(String paramString1, String paramString2, Map<String, String> paramMap, String paramString3)
             throws Exception {
         Map localMap = appendSign(paramMap, paramString3);
-        HttpProtocolHandler localHttpProtocolHandler = HttpProtocolHandler.getInstance();
-        HttpRequest localHttpRequest = new HttpRequest(HttpResultType.BYTES);
-        localHttpRequest.setCharset("utf-8");
-        localHttpRequest.setParameters(_$1(localMap));
-        localHttpRequest.setUrl(ALIPAY_GATE_WAY + "_input_charset=utf-8");
-        HttpResponse localHttpResponse = localHttpProtocolHandler.execute(localHttpRequest, paramString1, paramString2);
+        HttpProtocolHandler httpProtocolHandler = HttpProtocolHandler.getInstance();
+        HttpRequest httpRequest = new HttpRequest(HttpResultType.BYTES);
+        httpRequest.setCharset(DEFAULT_CHARSET);
+        httpRequest.setParameters(buildParam(localMap));
+        httpRequest.setUrl(ALIPAY_GATE_WAY + "_input_charset=" + DEFAULT_CHARSET);
+        HttpResponse localHttpResponse = httpProtocolHandler.execute(httpRequest, paramString1, paramString2);
         if (localHttpResponse == null)
             return null;
         String str = localHttpResponse.getStringResult();
         return str;
     }
 
-    private static NameValuePair[] _$1(Map<String, String> paramMap) {
+    private static NameValuePair[] buildParam(Map<String, String> paramMap) {
         NameValuePair[] arrayOfNameValuePair = new NameValuePair[paramMap.size()];
         int i = 0;
         Iterator localIterator = paramMap.entrySet().iterator();
@@ -84,86 +83,85 @@ public class AlipayHelper {
         }
         String str2 = "";
         if (paramMap.get("sign") != null)
-            str2 = (String) paramMap.get("sign");
+            str2 = paramMap.get("sign");
         boolean bool = appendCharset(paramMap, str2, paramString2);
         return (bool) && (str1.equals("true"));
     }
 
     private static boolean appendCharset(Map<String, String> paramMap, String paramString1, String paramString2) {
         Map localMap = paraFilter(paramMap);
-        String str = createLinkString(localMap);
-        boolean bool = false;
-        bool = verify(str, paramString1, paramString2, "utf-8");
-        return bool;
+        String str = createQueryString(localMap);
+
+        return verify(str, paramString1, paramString2);
+
     }
 
     private static String appendPartner(String paramString1, String paramString2) {
         String str = ALIPAY_GATE_WAY_NOTIFY_VERIFY + "&partner=" + paramString2 + "&notify_id=" + paramString1;
-        return _$1(str);
+        return requestUrl(str);
     }
 
-    private static String _$1(String paramString) {
-        String str = "";
+    private static String requestUrl(String paramString) {
+        String str;
         try {
             URL localURL = new URL(paramString);
-            HttpURLConnection localHttpURLConnection = (HttpURLConnection) localURL.openConnection();
-            BufferedReader localBufferedReader = new BufferedReader(new InputStreamReader(localHttpURLConnection.getInputStream()));
-            str = localBufferedReader.readLine().toString();
-        } catch (Exception localException) {
-            localException.printStackTrace();
+            HttpURLConnection httpURLConnection = (HttpURLConnection) localURL.openConnection();
+            BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(httpURLConnection.getInputStream()));
+            str = bufferedReader.readLine().toString();
+        } catch (Exception e) {
+            e.printStackTrace();
             str = "";
         }
         return str;
     }
 
     public static Map<String, String> paraFilter(Map<String, String> paramMap) {
-        HashMap localHashMap = new HashMap();
+        HashMap<String, String> map = new HashMap<String, String>();
         if ((paramMap == null) || (paramMap.size() <= 0))
-            return localHashMap;
-        Iterator localIterator = paramMap.keySet().iterator();
-        while (localIterator.hasNext()) {
-            String str1 = (String) localIterator.next();
-            String str2 = (String) paramMap.get(str1);
+            return map;
+        Iterator<String> it = paramMap.keySet().iterator();
+        while (it.hasNext()) {
+            String str1 = it.next();
+            String str2 = paramMap.get(str1);
             if ((str2 != null) && (!str2.equals("")) && (!str1.equalsIgnoreCase("sign")) && (!str1.equalsIgnoreCase("sign_type")))
-                localHashMap.put(str1, str2);
+                map.put(str1, str2);
         }
-        return localHashMap;
+        return map;
     }
 
-    public static String createLinkString(Map<String, String> paramMap) {
-        ArrayList localArrayList = new ArrayList(paramMap.keySet());
-        Collections.sort(localArrayList);
-        String str1 = "";
-        for (int i = 0; i < localArrayList.size(); i++) {
-            String str2 = (String) localArrayList.get(i);
-            String str3 = (String) paramMap.get(str2);
-            if (i == localArrayList.size() - 1)
-                str1 = str1 + str2 + "=" + str3;
-            else
-                str1 = str1 + str2 + "=" + str3 + "&";
+    public static String createQueryString(Map<String, String> paramMap) {
+        List<String> paramList = new ArrayList<String>(paramMap.keySet());
+        Collections.sort(paramList);
+        StringBuilder buf = new StringBuilder();
+        for (int i = 0; i < paramList.size(); i++) {
+            String key = paramList.get(i);
+            String val = paramMap.get(key);
+            if (i == paramList.size() - 1) {
+                buf.append(key).append("=").append(val);
+            } else {
+                buf.append(key).append("=").append(val).append("&");
+            }
         }
-        return str1;
+        return buf.toString();
     }
 
-    public static String sign(String paramString1, String paramString2, String paramString3) {
-        paramString1 = paramString1 + paramString2;
-        return DigestUtils.md5Hex(getBytes(paramString1, paramString3));
+    public static String sign(String queryString, String sellerKey) {
+        queryString = queryString + sellerKey;
+        return DigestUtils.md5Hex(getBytes(queryString));
     }
 
-    public static boolean verify(String paramString1, String paramString2, String paramString3, String paramString4) {
-        paramString1 = paramString1 + paramString3;
-        String str = DigestUtils.md5Hex(getBytes(paramString1, paramString4));
-        return str.equals(paramString2);
+    public static boolean verify(String queryString, String sign, String code) {
+        queryString = queryString + code;
+        String str = DigestUtils.md5Hex(getBytes(queryString));
+        return str.equals(sign);
     }
 
-    private static byte[] getBytes(String paramString1, String paramString2) {
-        if ((paramString2 == null) || ("".equals(paramString2)))
-            return paramString1.getBytes();
+    private static byte[] getBytes(String queryString) {
+
         try {
-            return paramString1.getBytes(paramString2);
+            return queryString.getBytes(DEFAULT_CHARSET);
         } catch (UnsupportedEncodingException localUnsupportedEncodingException) {
         }
-        throw new RuntimeException("MD5签名过程中出现错误,指定的编码集不对,您目前指定的编码集是:" + paramString2);
+        throw new RuntimeException("MD5签名过程中出现错误,指定的编码集不对,您目前指定的编码集是:" + DEFAULT_CHARSET);
     }
 }
-
